@@ -1,2 +1,1 @@
-# wangbin-sun.github.io
-A blog recording my personal growth
+It is a personal blog, adapted from **HPSTR Jekyll Theme**(https://mmistakes.github.io/hpstr-jekyll-theme/)
