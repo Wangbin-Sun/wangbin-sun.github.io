@@ -127,6 +127,10 @@
 <article class="hentry">
   <header>
     
+      <div class="entry-image-index">
+        <a href="http://localhost:4000/notes-statistical-natural-language-process/" title="Notes-Statistical Natural Language Process"><img src="http://localhost:4000/images/abstract-3.jpg" alt="Notes-Statistical Natural Language Process"></a>
+      </div><!-- /.entry-image -->
+    
     <div class="entry-meta">
       <span class="entry-date date published updated"><time datetime="2019-01-08T00:00:00+08:00"><a href="http://localhost:4000/notes-statistical-natural-language-process/">January 08, 2019</a></time></span><span class="author vcard"><span class="fn"><a href="http://localhost:4000/about/" title="About BenSuuun">BenSuuun</a></span></span>
       
@@ -160,7 +164,7 @@
       <li>熵最大时，随机变量最不确定</li>
     </ul>
   </li>
-  <li>[熵连锁规则]$H(X_1, X_2, …, X_n) = H(X_1) + H(X_2|X_1) + …+H(X_n|X_1,X_2,…,X_{n-1})$ 这里涉及到联合熵与条件熵</li>
+  <li>[熵连锁规则]$H(X_1,…, X_n)$ $= H(X_1) + …+H(X_n|X_1, …,X_{n-1})$ 这里涉及到联合熵与条件熵</li>
   <li>[互信息]$I(X;Y) = H(X) - H(X|Y)$知道了Y的信息后，X不确定性的减少量
     <ul>
       <li>$I(X;X) = 0$ 因而熵又称为自信息</li>
@@ -561,6 +565,82 @@
 <article class="hentry">
   <header>
     
+      <div class="entry-image-index">
+        <a href="http://localhost:4000/leetcode-1-to-20/" title="LeetCode #1~#20"><img src="http://localhost:4000/images/abstract-9.jpg" alt="LeetCode #1~#20"></a>
+      </div><!-- /.entry-image -->
+    
+    <div class="entry-meta">
+      <span class="entry-date date published updated"><time datetime="2019-01-08T00:00:00+08:00"><a href="http://localhost:4000/leetcode-1-to-20/">January 08, 2019</a></time></span><span class="author vcard"><span class="fn"><a href="http://localhost:4000/about/" title="About BenSuuun">BenSuuun</a></span></span>
+      
+    </div><!-- /.entry-meta -->
+    
+      <h1 class="entry-title"><a href="http://localhost:4000/leetcode-1-to-20/" rel="bookmark" title="LeetCode #1~#20" itemprop="url">LeetCode #1~#20</a></h1>
+    
+  </header>
+  <div class="entry-content">
+    <h2 id="1-two-sum">#1 Two Sum</h2>
+
+<h3 id="暴力求解">暴力求解</h3>
+<p>时间$O(n^2)$<br />
+空间$O(1)$<br />
+双层嵌套循环遍历数组，直至找到结果</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">twoSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+        <span class="s">"""
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="p">([</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h3 id="排序后求解">排序后求解</h3>
+<p>时间$O(n\log n)$<br />
+空间$O(1)$<br />
+选择该复杂度的排序算法，如快速排序；随后两端双指针相向遍历</p>
+
+<h3 id="hash求解">*Hash求解</h3>
+<p>时间$O(n)$<br />
+空间$O(n)$<br />
+将数据映射入hash表；遍历数值，并在hash表中寻找差值</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">twoSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+        <span class="s">"""
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """</span>
+        <span class="n">hashTable</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># python中dict以hash table方法实现
+</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
+            <span class="n">hashTable</span><span class="p">[</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">target</span> <span class="o">-</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">hashTable</span> <span class="ow">and</span> <span class="n">hashTable</span><span class="p">[</span><span class="n">res</span><span class="p">]</span> <span class="o">!=</span> <span class="n">i</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">([</span><span class="n">i</span><span class="p">,</span> <span class="n">hashTable</span><span class="p">[</span><span class="n">res</span><span class="p">]])</span>
+        <span class="k">raise</span> <span class="nb">Exception</span><span class="p">(</span><span class="s">'No solution'</span><span class="p">)</span>
+        <span class="c1">#异常处理
+</span></code></pre></div></div>
+
+<h3 id="tip">Tip</h3>
+<ul>
+  <li>关注异常情况的处理</li>
+  <li>了解语言内建数据结构的实现方法
+    <ul>
+      <li>python中dict以hash table方法实现</li>
+    </ul>
+  </li>
+</ul>
+
+  </div><!-- /.entry-content -->
+</article><!-- /.hentry -->
+
+<article class="hentry">
+  <header>
+    
     <div class="entry-meta">
       <span class="entry-date date published updated"><time datetime="2013-10-26T00:00:00+08:00"><a href="http://localhost:4000/background-image/">October 26, 2013</a></time></span><span class="author vcard"><span class="fn"><a href="http://localhost:4000/about/" title="About BenSuuun">BenSuuun</a></span></span>
       
@@ -624,116 +704,40 @@
   </div><!-- /.entry-content -->
 </article><!-- /.hentry -->
 
-<article class="hentry">
-  <header>
+
+
+<div class="pagination">
+  <ul class="inline-list">
     
-    <div class="entry-meta">
-      <span class="entry-date date published updated"><time datetime="2013-05-22T00:00:00+08:00"><a href="http://localhost:4000/sample-post-images/">May 22, 2013</a></time></span><span class="author vcard"><span class="fn"><a href="http://localhost:4000/about/" title="About BenSuuun">BenSuuun</a></span></span>
-      
-    </div><!-- /.entry-meta -->
     
-      <h1 class="entry-title"><a href="http://localhost:4000/sample-post-images/" rel="bookmark" title="A Post with Images" itemprop="url">A Post with Images</a></h1>
+
     
-  </header>
-  <div class="entry-content">
-    <p>Here are some examples of what a post with images might look like. If you want to display two or three images next to each other responsively use <code class="highlighter-rouge">figure</code> with the appropriate <code class="highlighter-rouge">class</code>. Each instance of <code class="highlighter-rouge">figure</code> is auto-numbered and displayed in the caption.</p>
-
-<h2 id="figures-for-images-or-video">Figures (for images or video)</h2>
-
-<h3 id="one-up">One Up</h3>
-
-<figure>
-	<a href="http://farm9.staticflickr.com/8426/7758832526_cc8f681e48_b.jpg"><img src="http://farm9.staticflickr.com/8426/7758832526_cc8f681e48_c.jpg" alt="" /></a>
-	<figcaption><a href="http://www.flickr.com/photos/80901381@N04/7758832526/" title="Morning Fog Emerging From Trees by A Guy Taking Pictures, on Flickr">Morning Fog Emerging From Trees by A Guy Taking Pictures, on Flickr</a>.</figcaption>
-</figure>
-
-<h3 id="two-up">Two Up</h3>
-
-<p>Apply the <code class="highlighter-rouge">half</code> class like so to display two images side by side that share the same caption.</p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;figure</span> <span class="na">class=</span><span class="s">"half"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/images/image-filename-1.jpg"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"/images/image-filename-2.jpg"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;figcaption&gt;</span>Caption describing these two images.<span class="nt">&lt;/figcaption&gt;</span>
-<span class="nt">&lt;/figure&gt;</span>
-</code></pre></div></div>
-
-<p>And you’ll get something that looks like this:</p>
-
-<figure class="half">
-	<a href="http://placehold.it/1200x600.jpg"><img src="http://placehold.it/600x300.jpg" alt="" /></a>
-	<a href="http://placehold.it/1200x600.jpg"><img src="http://placehold.it/600x300.jpg" alt="" /></a>
-	<img src="http://placehold.it/600x300.jpg" alt="" />
-	<img src="http://placehold.it/600x300.jpg" alt="" />
-	<figcaption>Two images.</figcaption>
-</figure>
-
-<h3 id="three-up">Three Up</h3>
-
-<p>Apply the <code class="highlighter-rouge">third</code> class like so to display three images side by side that share the same caption.</p>
-
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;figure</span> <span class="na">class=</span><span class="s">"third"</span><span class="nt">&gt;</span>
-	<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://placehold.it/1200x600.jpg"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"http://placehold.it/600x300.jpg"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;&lt;/a&gt;</span>
-	<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://placehold.it/1200x600.jpg"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"http://placehold.it/600x300.jpg"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;&lt;/a&gt;</span>
-	<span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"http://placehold.it/1200x600.jpg"</span><span class="nt">&gt;&lt;img</span> <span class="na">src=</span><span class="s">"http://placehold.it/600x300.jpg"</span> <span class="na">alt=</span><span class="s">""</span><span class="nt">&gt;&lt;/a&gt;</span>
-	<span class="nt">&lt;figcaption&gt;</span>Caption describing these three images.<span class="nt">&lt;/figcaption&gt;</span>
-<span class="nt">&lt;/figure&gt;</span>
-</code></pre></div></div>
-
-<p>And you’ll get something that looks like this:</p>
-
-<figure class="third">
-	<a href="http://placehold.it/1200x600.jpg"><img src="http://placehold.it/600x300.jpg" alt="" /></a>
-	<a href="http://placehold.it/1200x600.jpg"><img src="http://placehold.it/600x300.jpg" alt="" /></a>
-	<a href="http://placehold.it/1200x600.jpg"><img src="http://placehold.it/600x300.jpg" alt="" /></a>
-	<a href="http://placehold.it/1200x600.jpg"><img src="http://placehold.it/600x300.jpg" alt="" /></a>
-	<a href="http://placehold.it/1200x600.jpg"><img src="http://placehold.it/600x300.jpg" alt="" /></a>
-	<a href="http://placehold.it/1200x600.jpg"><img src="http://placehold.it/600x300.jpg" alt="" /></a>
-	<figcaption>Three images.</figcaption>
-</figure>
-
-<h3 id="alternative-way">Alternative way</h3>
-
-<p>Another way to achieve the same result is to include <code class="highlighter-rouge">gallery</code> Liquid template. In this case you
-don’t have to write any HTML tags – just copy a small block of code, adjust the parameters (see below)
-and fill the block with any number of links to images. You can mix relative and external links.</p>
-
-<p>Here is the block you might want to use:</p>
-
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">capture</span><span class="w"> </span><span class="na">images</span><span class="w"> </span><span class="p">%}</span>
-	/images/abstract-10.jpg
-	/images/abstract-11.jpg
-	http://upload.wikimedia.org/wikipedia/en/2/24/Lenna.png
-<span class="p">{%</span><span class="w"> </span><span class="nt">endcapture</span><span class="w"> </span><span class="p">%}</span>
-<span class="p">{%</span><span class="w"> </span><span class="nt">include</span><span class="w"> </span><span class="nv">gallery</span><span class="w"> </span><span class="na">images</span><span class="o">=</span><span class="nv">images</span><span class="w"> </span><span class="na">caption</span><span class="o">=</span><span class="s2">"Test images"</span><span class="w"> </span><span class="na">cols</span><span class="o">=</span><span class="mi">3</span><span class="w"> </span><span class="p">%}</span>
-</code></pre></div></div>
-
-<p>Parameters:</p>
-
-<ul>
-  <li><code class="highlighter-rouge">caption</code>: Sets the caption under the gallery (see <code class="highlighter-rouge">figcaption</code> HTML tag above);</li>
-  <li><code class="highlighter-rouge">cols</code>: Sets the number of columns of the gallery.
-Available values: [1..3].</li>
-</ul>
-
-<p>It will look something like this:</p>
-
-<figure class="third">
     
-    <a href="/images/abstract-10.jpg"><img src="/images/abstract-10.jpg" alt="" /></a>
+      <li><strong class="current-page">1</strong></li>
     
-    <a href="/images/abstract-11.jpg"><img src="/images/abstract-11.jpg" alt="" /></a>
+
     
-    <a href="http://upload.wikimedia.org/wikipedia/en/2/24/Lenna.png"><img src="http://upload.wikimedia.org/wikipedia/en/2/24/Lenna.png" alt="" /></a>
     
-    <figcaption>Test images</figcaption>
-</figure>
 
+    
+    
+    
 
-  </div><!-- /.entry-content -->
-</article><!-- /.hentry -->
+    
 
+    
+    
 
+    
+      <li><a href="http://localhost:4000/page2/">2</a></li>
+    
+
+    
+    
+      <li><a href="http://localhost:4000/page2/" class="btn">Next</a></li>
+    
+  </ul>
+</div>
 
 </div><!-- /#main -->
 

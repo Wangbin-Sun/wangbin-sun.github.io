@@ -59,7 +59,7 @@
 
 </head>
 
-<body id="post" >
+<body id="post" class="feature">
 
 <!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
 <nav id="dl-menu" class="dl-menuwrapper" role="navigation">
@@ -108,6 +108,13 @@
 
 
 
+<div class="entry-header">
+  
+  <div class="entry-image">
+    <img src="http://localhost:4000/images/abstract-3.jpg" alt="Notes-Statistical Natural Language Process">
+  </div><!-- /.entry-image -->
+</div><!-- /.entry-header -->
+
 
 <div id="main" role="main">
   <article class="hentry">
@@ -145,7 +152,7 @@
       <li>熵最大时，随机变量最不确定</li>
     </ul>
   </li>
-  <li>[熵连锁规则]$H(X_1, X_2, …, X_n) = H(X_1) + H(X_2|X_1) + …+H(X_n|X_1,X_2,…,X_{n-1})$ 这里涉及到联合熵与条件熵</li>
+  <li>[熵连锁规则]$H(X_1,…, X_n)$ $= H(X_1) + …+H(X_n|X_1, …,X_{n-1})$ 这里涉及到联合熵与条件熵</li>
   <li>[互信息]$I(X;Y) = H(X) - H(X|Y)$知道了Y的信息后，X不确定性的减少量
     <ul>
       <li>$I(X;X) = 0$ 因而熵又称为自信息</li>
@@ -576,23 +583,23 @@
     <div class="read-more">
   
     <div class="read-more-header">
-      <a href="http://localhost:4000/background-image/" class="read-more-btn">Read More</a>
+      <a href="http://localhost:4000/leetcode-1-to-20/" class="read-more-btn">Read More</a>
     </div><!-- /.read-more-header -->
     <div class="read-more-content">
-      <h3><a href="http://localhost:4000/background-image/" title="Post with a Background Image">Post with a Background Image</a></h3>
-      <p>Sample post with a background image CSS override. <a href="http://localhost:4000/background-image/">Continue reading</a></p>
+      <h3><a href="http://localhost:4000/leetcode-1-to-20/" title="LeetCode #1~#20">LeetCode #1~#20</a></h3>
+      <p>Codes and notes on LeetCode #1~#20 <a href="http://localhost:4000/leetcode-1-to-20/">Continue reading</a></p>
     </div><!-- /.read-more-content -->
   
   <div class="read-more-list">
     
       <div class="list-item">
-        <h4><a href="http://localhost:4000/sample-link-post/" title="Sample Link Post">Sample Link Post</a></h4>
-        <span>Published on August 12, 2013</span>
+        <h4><a href="http://localhost:4000/background-image/" title="Post with a Background Image">Post with a Background Image</a></h4>
+        <span>Published on October 26, 2013</span>
       </div><!-- /.list-item -->
     
       <div class="list-item">
-        <h4><a href="http://localhost:4000/video-post/" title="A Post with a Video">A Post with a Video</a></h4>
-        <span>Published on June 25, 2013</span>
+        <h4><a href="http://localhost:4000/sample-link-post/" title="Sample Link Post">Sample Link Post</a></h4>
+        <span>Published on August 12, 2013</span>
       </div><!-- /.list-item -->
     
   </div><!-- /.read-more-list -->

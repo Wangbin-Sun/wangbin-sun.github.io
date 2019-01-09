@@ -1,4 +1,59 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-08T14:44:40+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Rendezvous</title><subtitle>A blog recording personal growth</subtitle><entry><title type="html">Notes-Statistical Natural Language Process</title><link href="http://localhost:4000/notes-statistical-natural-language-process/" rel="alternate" type="text/html" title="Notes-Statistical Natural Language Process" /><published>2019-01-08T00:00:00+08:00</published><updated>2019-01-08T00:00:00+08:00</updated><id>http://localhost:4000/notes-statistical-natural-language-process</id><content type="html" xml:base="http://localhost:4000/notes-statistical-natural-language-process/">&lt;h2 id=&quot;notes-of-统计自然语言处理-by-宗成庆&quot;&gt;Notes of 《统计自然语言处理》 by 宗成庆&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-08T19:11:07+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Rendezvous</title><subtitle>A blog recording personal growth</subtitle><entry><title type="html">LeetCode #1~#20</title><link href="http://localhost:4000/leetcode-1-to-20/" rel="alternate" type="text/html" title="LeetCode #1~#20" /><published>2019-01-08T00:00:00+08:00</published><updated>2019-01-08T00:00:00+08:00</updated><id>http://localhost:4000/leetcode-1-to-20</id><content type="html" xml:base="http://localhost:4000/leetcode-1-to-20/">&lt;h2 id=&quot;1-two-sum&quot;&gt;#1 Two Sum&lt;/h2&gt;
+
+&lt;h3 id=&quot;暴力求解&quot;&gt;暴力求解&lt;/h3&gt;
+&lt;p&gt;时间$O(n^2)$&lt;br /&gt;
+空间$O(1)$&lt;br /&gt;
+双层嵌套循环遍历数组，直至找到结果&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;twoSum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        &quot;&quot;&quot;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;排序后求解&quot;&gt;排序后求解&lt;/h3&gt;
+&lt;p&gt;时间$O(n\log n)$&lt;br /&gt;
+空间$O(1)$&lt;br /&gt;
+选择该复杂度的排序算法，如快速排序；随后两端双指针相向遍历&lt;/p&gt;
+
+&lt;h3 id=&quot;hash求解&quot;&gt;*Hash求解&lt;/h3&gt;
+&lt;p&gt;时间$O(n)$&lt;br /&gt;
+空间$O(n)$&lt;br /&gt;
+将数据映射入hash表；遍历数值，并在hash表中寻找差值&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;twoSum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        &quot;&quot;&quot;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;hashTable&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;# python中dict以hash table方法实现
+&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;hashTable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hashTable&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hashTable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;hashTable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]])&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;raise&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Exception&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'No solution'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;#异常处理
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;tip&quot;&gt;Tip&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;关注异常情况的处理&lt;/li&gt;
+  &lt;li&gt;了解语言内建数据结构的实现方法
+    &lt;ul&gt;
+      &lt;li&gt;python中dict以hash table方法实现&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="algorithm" /><category term="python" /><category term="leetcode" /><summary type="html">#1 Two Sum</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/images/abstract-9.jpg" /></entry><entry><title type="html">Notes-Statistical Natural Language Process</title><link href="http://localhost:4000/notes-statistical-natural-language-process/" rel="alternate" type="text/html" title="Notes-Statistical Natural Language Process" /><published>2019-01-08T00:00:00+08:00</published><updated>2019-01-08T00:00:00+08:00</updated><id>http://localhost:4000/notes-statistical-natural-language-process</id><content type="html" xml:base="http://localhost:4000/notes-statistical-natural-language-process/">&lt;h2 id=&quot;notes-of-统计自然语言处理-by-宗成庆&quot;&gt;Notes of 《统计自然语言处理》 by 宗成庆&lt;/h2&gt;
 
 &lt;h2 id=&quot;第1章-绪论&quot;&gt;第1章 绪论&lt;/h2&gt;
 &lt;ul&gt;
@@ -22,7 +77,7 @@
       &lt;li&gt;熵最大时，随机变量最不确定&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;[熵连锁规则]$H(X_1, X_2, …, X_n) = H(X_1) + H(X_2|X_1) + …+H(X_n|X_1,X_2,…,X_{n-1})$ 这里涉及到联合熵与条件熵&lt;/li&gt;
+  &lt;li&gt;[熵连锁规则]$H(X_1,…, X_n)$ $= H(X_1) + …+H(X_n|X_1, …,X_{n-1})$ 这里涉及到联合熵与条件熵&lt;/li&gt;
   &lt;li&gt;[互信息]$I(X;Y) = H(X) - H(X|Y)$知道了Y的信息后，X不确定性的减少量
     &lt;ul&gt;
       &lt;li&gt;$I(X;X) = 0$ 因而熵又称为自信息&lt;/li&gt;
@@ -415,7 +470,7 @@
   &lt;/li&gt;
   &lt;li&gt;［口语生成方法］采用基于模版的方法和基于特征的深层生成方法相结合的混合生成方法，包括微观规划器、表层生成器和后处理模块&lt;/li&gt;
   &lt;li&gt;对话管理模块是系统的核心，基于对话历史调度人机交互机制，辅助语言解析器对语音识别结果进行正确的理解，为问题求解提供帮助，并指导语言的生成过程&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="natural language process" /><category term="machine learning" /><category term="book" /><summary type="html">Notes of 《统计自然语言处理》 by 宗成庆</summary></entry><entry><title type="html">Post with a Background Image</title><link href="http://localhost:4000/background-image/" rel="alternate" type="text/html" title="Post with a Background Image" /><published>2013-10-26T00:00:00+08:00</published><updated>2013-10-26T00:00:00+08:00</updated><id>http://localhost:4000/background-image</id><content type="html" xml:base="http://localhost:4000/background-image/">&lt;p&gt;Here be a sample post with a custom background image. To utilize this “feature” just add the following YAML to a post’s front matter.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="natural language process" /><category term="machine learning" /><category term="book" /><summary type="html">Notes of 《统计自然语言处理》 by 宗成庆</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/images/abstract-3.jpg" /></entry><entry><title type="html">Post with a Background Image</title><link href="http://localhost:4000/background-image/" rel="alternate" type="text/html" title="Post with a Background Image" /><published>2013-10-26T00:00:00+08:00</published><updated>2013-10-26T00:00:00+08:00</updated><id>http://localhost:4000/background-image</id><content type="html" xml:base="http://localhost:4000/background-image/">&lt;p&gt;Here be a sample post with a custom background image. To utilize this “feature” just add the following YAML to a post’s front matter.&lt;/p&gt;
 
 &lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;image&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;background&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;filename.png&lt;/span&gt;

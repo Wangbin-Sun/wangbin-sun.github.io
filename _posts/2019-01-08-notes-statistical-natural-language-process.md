@@ -3,6 +3,9 @@ layout: post
 title: "Notes-Statistical Natural Language Process"
 description: "Notes of 统计自然语言处理 by 宗成庆"
 tags: [natural language process, machine learning, book]
+image:
+  path: /images/abstract-3.jpg
+  feature: abstract-3.jpg
 ---
 
 ## Notes of 《统计自然语言处理》 by 宗成庆
