@@ -128,6 +128,330 @@
   <header>
     
       <div class="entry-image-index">
+        <a href="http://localhost:4000/leetcode-1-to-20/" title="LeetCode #1~#20"><img src="http://localhost:4000/images/abstract-9.jpg" alt="LeetCode #1~#20"></a>
+      </div><!-- /.entry-image -->
+    
+    <div class="entry-meta">
+      <span class="entry-date date published updated"><time datetime="2019-01-09T00:00:00+08:00"><a href="http://localhost:4000/leetcode-1-to-20/">January 09, 2019</a></time></span><span class="author vcard"><span class="fn"><a href="http://localhost:4000/about/" title="About BenSuuun">BenSuuun</a></span></span>
+      
+    </div><!-- /.entry-meta -->
+    
+      <h1 class="entry-title"><a href="http://localhost:4000/leetcode-1-to-20/" rel="bookmark" title="LeetCode #1~#20" itemprop="url">LeetCode #1~#20</a></h1>
+    
+  </header>
+  <div class="entry-content">
+    <h2 id="1-two-sum">#1 Two Sum</h2>
+
+<h3 id="暴力求解">暴力求解</h3>
+<p>时间$O(n^2)$<br />
+空间$O(1)$<br />
+双层嵌套循环遍历数组，直至找到结果</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">twoSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+        <span class="s">"""
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="p">([</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h3 id="排序后求解">排序后求解</h3>
+<p>时间$O(n\log n)$<br />
+空间$O(1)$<br />
+选择该复杂度的排序算法，如快速排序；随后两端双指针相向遍历</p>
+
+<h3 id="hash求解">*Hash求解</h3>
+<p>时间$O(n)$<br />
+空间$O(n)$<br />
+将数据映射入hash表；遍历数值，并在hash表中寻找差值</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">twoSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+        <span class="s">"""
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """</span>
+        <span class="n">hashTable</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1"># python中dict以hash table方法实现
+</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
+            <span class="n">hashTable</span><span class="p">[</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">target</span> <span class="o">-</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">hashTable</span> <span class="ow">and</span> <span class="n">hashTable</span><span class="p">[</span><span class="n">res</span><span class="p">]</span> <span class="o">!=</span> <span class="n">i</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">([</span><span class="n">i</span><span class="p">,</span> <span class="n">hashTable</span><span class="p">[</span><span class="n">res</span><span class="p">]])</span>
+        <span class="k">raise</span> <span class="nb">Exception</span><span class="p">(</span><span class="s">'No solution'</span><span class="p">)</span>
+        <span class="c1">#异常处理
+</span></code></pre></div></div>
+
+<h3 id="tip">Tip</h3>
+<ul>
+  <li>关注异常情况的处理</li>
+  <li>了解语言内建数据结构的实现方法
+    <ul>
+      <li>python中<a href="https://mail.python.org/pipermail/python-list/2000-March/048085.html">dictionary</a>以hash table方法实现</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="2-add-two-numbers">#2 Add Two Numbers</h2>
+
+<h3 id="逐位运算">逐位运算</h3>
+<p>时间$O(n)$<br />
+空间$O(n)$<br />
+两个链表上定义指针，逐位运算，考虑进位情况</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">addTwoNumbers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">):</span>
+        <span class="s">"""
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """</span>
+        <span class="n">p1</span> <span class="o">=</span> <span class="n">l1</span>
+        <span class="n">p2</span> <span class="o">=</span> <span class="n">l2</span>
+        <span class="n">lr</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+        <span class="n">pr</span> <span class="o">=</span> <span class="n">lr</span>
+        <span class="n">incre</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">p1</span> <span class="o">!=</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">p2</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">incre</span> <span class="o">+</span> <span class="n">p1</span><span class="o">.</span><span class="n">val</span> <span class="o">+</span> <span class="n">p2</span><span class="o">.</span><span class="n">val</span>
+            <span class="n">incre</span> <span class="o">=</span> <span class="n">tmp</span> <span class="o">//</span> <span class="mi">10</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span> <span class="o">%</span> <span class="mi">10</span>
+            <span class="n">pr</span><span class="o">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+            <span class="n">pr</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="nb">next</span>
+            <span class="n">p1</span> <span class="o">=</span> <span class="n">p1</span><span class="o">.</span><span class="nb">next</span>
+            <span class="n">p2</span> <span class="o">=</span> <span class="n">p2</span><span class="o">.</span><span class="nb">next</span>
+        <span class="k">while</span> <span class="n">p1</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">incre</span> <span class="o">+</span> <span class="n">p1</span><span class="o">.</span><span class="n">val</span>
+            <span class="n">incre</span> <span class="o">=</span> <span class="n">tmp</span> <span class="o">//</span> <span class="mi">10</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span> <span class="o">%</span> <span class="mi">10</span>
+            <span class="n">pr</span><span class="o">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+            <span class="n">pr</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="nb">next</span>
+            <span class="n">p1</span> <span class="o">=</span> <span class="n">p1</span><span class="o">.</span><span class="nb">next</span>
+        <span class="k">while</span> <span class="n">p2</span> <span class="o">!=</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">incre</span> <span class="o">+</span> <span class="n">p2</span><span class="o">.</span><span class="n">val</span>
+            <span class="n">incre</span> <span class="o">=</span> <span class="n">tmp</span> <span class="o">//</span> <span class="mi">10</span>
+            <span class="n">tmp</span> <span class="o">=</span><span class="n">tmp</span> <span class="o">%</span> <span class="mi">10</span>
+            <span class="n">pr</span><span class="o">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+            <span class="n">pr</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="nb">next</span>
+            <span class="n">p2</span> <span class="o">=</span> <span class="n">p2</span><span class="o">.</span><span class="nb">next</span>
+        <span class="k">if</span> <span class="n">incre</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1">#当最后有进位时
+</span>            <span class="n">pr</span><span class="o">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="n">incre</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">lr</span><span class="o">.</span><span class="nb">next</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="逐位运算-简化">*逐位运算-简化</h3>
+<p>时间$O(n)$<br />
+空间$O(n)$<br />
+利用bool()的性质，仅在0、None或空集情况下为False</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">addTwoNumbers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">l1</span><span class="p">,</span> <span class="n">l2</span><span class="p">):</span>
+        <span class="s">"""
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """</span>
+        <span class="n">lr</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+        <span class="n">pr</span> <span class="o">=</span> <span class="n">lr</span>
+        <span class="n">incre</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="n">incre</span> <span class="ow">or</span> <span class="n">l1</span> <span class="ow">or</span> <span class="n">l2</span><span class="p">:</span>
+            <span class="c1">#bool性质
+</span>            <span class="n">tmp</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">if</span> <span class="n">l1</span><span class="p">:</span>
+                <span class="n">tmp</span> <span class="o">+=</span> <span class="n">l1</span><span class="o">.</span><span class="n">val</span>
+                <span class="n">l1</span> <span class="o">=</span> <span class="n">l1</span><span class="o">.</span><span class="nb">next</span>
+            <span class="k">if</span> <span class="n">l2</span><span class="p">:</span>
+                <span class="n">tmp</span> <span class="o">+=</span> <span class="n">l2</span><span class="o">.</span><span class="n">val</span>
+                <span class="n">l2</span> <span class="o">=</span> <span class="n">l2</span><span class="o">.</span><span class="nb">next</span>
+            <span class="n">tmp</span> <span class="o">+=</span> <span class="n">incre</span>
+            <span class="n">incre</span> <span class="o">=</span> <span class="n">tmp</span> <span class="o">//</span> <span class="mi">10</span>
+            <span class="n">tmp</span> <span class="o">=</span> <span class="n">tmp</span> <span class="o">%</span> <span class="mi">10</span>
+            <span class="n">pr</span><span class="o">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">ListNode</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+            <span class="n">pr</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="nb">next</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">lr</span><span class="o">.</span><span class="nb">next</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="tip-1">Tip</h3>
+<ul>
+  <li>类之间的<a href="https://www.cnblogs.com/jiangzhaowei/p/5740913.html">赋值</a>与指针引用的关系
+    <ul>
+      <li>函数中，不可变值与可变值传递有区别，都可认为是“局部变量”即传入变量的指针不变，但后者传递的指针引用可在函数中修改值</li>
+      <li>python的变量都可看作是指针</li>
+    </ul>
+  </li>
+  <li>考虑边界情况</li>
+</ul>
+
+<h2 id="3-longest-substring-without-repeating-characters">#3 Longest Substring Without Repeating Characters</h2>
+
+<h3 id="朴素求解">朴素求解</h3>
+<p>设将第i位字符作为最后一位的最长符合要求子串长度为l(i)，其包含字符集合为s[i-l(i): i+1]。当遇到第i+1位字符时，为了计算l(i+1)，若第i+1位字符出现在上述集合，需要提取其位置，并重新计算l(i+1)；若未出现，则结果为l(i)+1。<br />
+时间优化方面，关键在判断字符是否出现在集合以及其相应的位置。朴素求解使用基本的数据遍历的方式。<br />
+时间$O(n^2)$<br />
+空间$O(n)$</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">lengthOfLongestSubstring</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="s">"""
+        :type s: str
+        :rtype: int
+        """</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="c1">#边界条件
+</span>            <span class="k">return</span> <span class="mi">0</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)):</span>
+            <span class="n">pos</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">i</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                    <span class="n">pos</span> <span class="o">=</span> <span class="n">j</span>
+                    <span class="k">break</span>
+            <span class="k">if</span> <span class="n">pos</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">pos</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="hash求解-1">*Hash求解</h3>
+<p>思路类似朴素求解，额外维护一张HashTable，记录每个字符最近出现的位置<br />
+时间$O(n)$<br />
+空间$O(n)$</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">lengthOfLongestSubstring</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+        <span class="s">"""
+        :type s: str
+        :rtype: int
+        """</span>
+        <span class="n">maxLen</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)):</span>
+            <span class="k">if</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">in</span> <span class="n">pos</span> <span class="ow">and</span> <span class="n">pos</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">&gt;=</span> <span class="n">start</span><span class="p">:</span>
+            <span class="c1">#and和or都是short-circuitlogic
+</span>                <span class="n">start</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">maxLen</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">maxLen</span><span class="p">,</span> <span class="n">i</span> <span class="o">-</span> <span class="n">start</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">pos</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
+        <span class="k">return</span> <span class="n">maxLen</span>
+</code></pre></div></div>
+
+<h3 id="tip-2">Tip</h3>
+<ul>
+  <li>考虑边界情况，空集</li>
+  <li>在数组切片时，把握位置与长度</li>
+</ul>
+
+<h2 id="4-median-of-two-sorted-arrays">#4 Median of Two Sorted Arrays</h2>
+
+<h3 id="递归求解">递归求解</h3>
+<p>将问题转换成给定两组排好序的数据，寻找第i大的值。取两个数组里面的中间位置数，进行比较，能够得到一些位置的数在所有数据中的排名情况，例如图4.1。</p>
+<figure>
+    <img src="/images/LeetCode/LeetCode4.1.jpg" alt="" />
+    <figcaption>图4.1</figcaption>
+</figure>
+<p>切除不可能符合要求的数，缩小两个数列，递归求解.<br />
+时间$O(\log n)$<br />
+空间$O(1)$</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">floor</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">ceil</span>
+
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">findMedianSortedArrays</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums1</span><span class="p">,</span> <span class="n">nums2</span><span class="p">):</span>
+        <span class="s">"""
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: float
+        """</span>
+        <span class="n">h1</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">t1</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">h2</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">t2</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="n">floor</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">nums1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">t1</span> <span class="o">&gt;</span> <span class="n">h1</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">t2</span> <span class="o">&gt;</span> <span class="n">h2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">m1</span> <span class="o">=</span> <span class="n">floor</span><span class="p">((</span><span class="n">h1</span> <span class="o">+</span> <span class="n">t1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">m2</span> <span class="o">=</span> <span class="n">floor</span><span class="p">((</span><span class="n">h2</span> <span class="o">+</span> <span class="n">t2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">midValue1</span> <span class="o">=</span> <span class="n">nums1</span><span class="p">[</span><span class="n">m1</span><span class="p">]</span>
+            <span class="n">midValue2</span> <span class="o">=</span> <span class="n">nums2</span><span class="p">[</span><span class="n">m2</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">midValue1</span> <span class="o">&lt;=</span> <span class="n">midValue2</span><span class="p">:</span>
+                <span class="n">remainL</span> <span class="o">=</span> <span class="nb">max</span><span class="p">((</span><span class="n">m1</span> <span class="o">-</span> <span class="n">h1</span> <span class="o">+</span> <span class="n">m2</span> <span class="o">-</span> <span class="n">h2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">target</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="n">remainL</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">remainL</span><span class="p">,</span> <span class="n">m1</span> <span class="o">-</span> <span class="n">h1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">remainR</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">target</span> <span class="o">-</span> <span class="p">(</span><span class="n">m1</span> <span class="o">-</span> <span class="n">h1</span> <span class="o">+</span> <span class="n">m2</span> <span class="o">-</span> <span class="n">h2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="n">remainR</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">remainR</span><span class="p">,</span> <span class="n">t2</span> <span class="o">-</span> <span class="n">m2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">target</span> <span class="o">-</span> <span class="p">(</span><span class="n">m1</span> <span class="o">-</span> <span class="n">h1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">remainL</span><span class="p">)</span>
+                <span class="n">h1</span> <span class="o">=</span> <span class="n">m1</span> <span class="o">-</span> <span class="n">remainL</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="n">t2</span> <span class="o">=</span> <span class="n">m2</span> <span class="o">+</span> <span class="n">remainR</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">remainL</span> <span class="o">=</span> <span class="nb">max</span><span class="p">((</span><span class="n">m1</span> <span class="o">-</span> <span class="n">h1</span> <span class="o">+</span> <span class="n">m2</span> <span class="o">-</span> <span class="n">h2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">target</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="n">remainL</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">remainL</span><span class="p">,</span> <span class="n">m2</span> <span class="o">-</span> <span class="n">h2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">remainR</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">target</span> <span class="o">-</span> <span class="p">(</span><span class="n">m1</span> <span class="o">-</span> <span class="n">h1</span> <span class="o">+</span> <span class="n">m2</span> <span class="o">-</span> <span class="n">h2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="n">remainR</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">remainR</span><span class="p">,</span> <span class="n">t1</span> <span class="o">-</span> <span class="n">m1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">target</span> <span class="o">-</span> <span class="p">(</span><span class="n">m2</span> <span class="o">-</span> <span class="n">h2</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">remainL</span><span class="p">)</span>
+                <span class="n">h2</span> <span class="o">=</span> <span class="n">m2</span> <span class="o">-</span> <span class="n">remainL</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="n">t1</span> <span class="o">=</span> <span class="n">m1</span> <span class="o">+</span> <span class="n">remainR</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">t1</span> <span class="o">==</span> <span class="n">h1</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">numL</span> <span class="o">=</span> <span class="n">nums2</span><span class="p">[</span><span class="n">h2</span> <span class="o">+</span> <span class="n">target</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">t2</span><span class="o">==</span> <span class="n">h2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">numL</span> <span class="o">=</span> <span class="n">nums1</span><span class="p">[</span><span class="n">h1</span> <span class="o">+</span> <span class="n">target</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">h1</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">t1</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">h2</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">t2</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">target</span> <span class="o">=</span> <span class="n">ceil</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">nums1</span><span class="p">)</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums2</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">t1</span> <span class="o">&gt;</span> <span class="n">h1</span> <span class="o">-</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">t2</span> <span class="o">&gt;</span> <span class="n">h2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">m1</span> <span class="o">=</span> <span class="n">floor</span><span class="p">((</span><span class="n">h1</span> <span class="o">+</span> <span class="n">t1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">m2</span> <span class="o">=</span> <span class="n">floor</span><span class="p">((</span><span class="n">h2</span> <span class="o">+</span> <span class="n">t2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+            <span class="n">midValue1</span> <span class="o">=</span> <span class="n">nums1</span><span class="p">[</span><span class="n">m1</span><span class="p">]</span>
+            <span class="n">midValue2</span> <span class="o">=</span> <span class="n">nums2</span><span class="p">[</span><span class="n">m2</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">midValue1</span> <span class="o">&lt;=</span> <span class="n">midValue2</span><span class="p">:</span>
+                <span class="n">remainL</span> <span class="o">=</span> <span class="nb">max</span><span class="p">((</span><span class="n">m1</span> <span class="o">-</span> <span class="n">h1</span> <span class="o">+</span> <span class="n">m2</span> <span class="o">-</span> <span class="n">h2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">target</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="n">remainL</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">remainL</span><span class="p">,</span> <span class="n">m1</span> <span class="o">-</span> <span class="n">h1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">remainR</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">target</span> <span class="o">-</span> <span class="p">(</span><span class="n">m1</span> <span class="o">-</span> <span class="n">h1</span> <span class="o">+</span> <span class="n">m2</span> <span class="o">-</span> <span class="n">h2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="n">remainR</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">remainR</span><span class="p">,</span> <span class="n">t2</span> <span class="o">-</span> <span class="n">m2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">target</span> <span class="o">-</span> <span class="p">(</span><span class="n">m1</span> <span class="o">-</span> <span class="n">h1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">remainL</span><span class="p">)</span>
+                <span class="n">h1</span> <span class="o">=</span> <span class="n">m1</span> <span class="o">-</span> <span class="n">remainL</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="n">t2</span> <span class="o">=</span> <span class="n">m2</span> <span class="o">+</span> <span class="n">remainR</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">remainL</span> <span class="o">=</span> <span class="nb">max</span><span class="p">((</span><span class="n">m1</span> <span class="o">-</span> <span class="n">h1</span> <span class="o">+</span> <span class="n">m2</span> <span class="o">-</span> <span class="n">h2</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">target</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="n">remainL</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">remainL</span><span class="p">,</span> <span class="n">m2</span> <span class="o">-</span> <span class="n">h2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">remainR</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">target</span> <span class="o">-</span> <span class="p">(</span><span class="n">m1</span> <span class="o">-</span> <span class="n">h1</span> <span class="o">+</span> <span class="n">m2</span> <span class="o">-</span> <span class="n">h2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="n">remainR</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">remainR</span><span class="p">,</span> <span class="n">t1</span> <span class="o">-</span> <span class="n">m1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">target</span> <span class="o">-</span> <span class="p">(</span><span class="n">m2</span> <span class="o">-</span> <span class="n">h2</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">remainL</span><span class="p">)</span>
+                <span class="n">h2</span> <span class="o">=</span> <span class="n">m2</span> <span class="o">-</span> <span class="n">remainL</span> <span class="o">+</span> <span class="mi">1</span>
+                <span class="n">t1</span> <span class="o">=</span> <span class="n">m1</span> <span class="o">+</span> <span class="n">remainR</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">t1</span> <span class="o">==</span> <span class="n">h1</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">numR</span> <span class="o">=</span> <span class="n">nums2</span><span class="p">[</span><span class="n">h2</span> <span class="o">+</span> <span class="n">target</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">t2</span> <span class="o">==</span> <span class="n">h2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">numR</span> <span class="o">=</span> <span class="n">nums1</span><span class="p">[</span><span class="n">h1</span> <span class="o">+</span> <span class="n">target</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">numL</span> <span class="o">+</span> <span class="n">numR</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+</code></pre></div></div>
+
+<h3 id="tip-3">Tip</h3>
+<ul>
+  <li>对变量更新时，检查其是否会影响其他变量，需要合理安排次序甚至加入临时变量</li>
+  <li>数学库的函数需要加载</li>
+</ul>
+
+  </div><!-- /.entry-content -->
+</article><!-- /.hentry -->
+
+<article class="hentry">
+  <header>
+    
+      <div class="entry-image-index">
         <a href="http://localhost:4000/notes-statistical-natural-language-process/" title="Notes-Statistical Natural Language Process"><img src="http://localhost:4000/images/abstract-3.jpg" alt="Notes-Statistical Natural Language Process"></a>
       </div><!-- /.entry-image -->
     
@@ -557,82 +881,6 @@
   </li>
   <li>［口语生成方法］采用基于模版的方法和基于特征的深层生成方法相结合的混合生成方法，包括微观规划器、表层生成器和后处理模块</li>
   <li>对话管理模块是系统的核心，基于对话历史调度人机交互机制，辅助语言解析器对语音识别结果进行正确的理解，为问题求解提供帮助，并指导语言的生成过程</li>
-</ul>
-
-  </div><!-- /.entry-content -->
-</article><!-- /.hentry -->
-
-<article class="hentry">
-  <header>
-    
-      <div class="entry-image-index">
-        <a href="http://localhost:4000/leetcode-1-to-20/" title="LeetCode #1~#20"><img src="http://localhost:4000/images/abstract-9.jpg" alt="LeetCode #1~#20"></a>
-      </div><!-- /.entry-image -->
-    
-    <div class="entry-meta">
-      <span class="entry-date date published updated"><time datetime="2019-01-08T00:00:00+08:00"><a href="http://localhost:4000/leetcode-1-to-20/">January 08, 2019</a></time></span><span class="author vcard"><span class="fn"><a href="http://localhost:4000/about/" title="About BenSuuun">BenSuuun</a></span></span>
-      
-    </div><!-- /.entry-meta -->
-    
-      <h1 class="entry-title"><a href="http://localhost:4000/leetcode-1-to-20/" rel="bookmark" title="LeetCode #1~#20" itemprop="url">LeetCode #1~#20</a></h1>
-    
-  </header>
-  <div class="entry-content">
-    <h2 id="1-two-sum">#1 Two Sum</h2>
-
-<h3 id="暴力求解">暴力求解</h3>
-<p>时间$O(n^2)$<br />
-空间$O(1)$<br />
-双层嵌套循环遍历数组，直至找到结果</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">twoSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
-        <span class="s">"""
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
-            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
-                <span class="k">if</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
-                    <span class="k">return</span> <span class="p">([</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">])</span>
-</code></pre></div></div>
-
-<h3 id="排序后求解">排序后求解</h3>
-<p>时间$O(n\log n)$<br />
-空间$O(1)$<br />
-选择该复杂度的排序算法，如快速排序；随后两端双指针相向遍历</p>
-
-<h3 id="hash求解">*Hash求解</h3>
-<p>时间$O(n)$<br />
-空间$O(n)$<br />
-将数据映射入hash表；遍历数值，并在hash表中寻找差值</p>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">twoSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
-        <span class="s">"""
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """</span>
-        <span class="n">hashTable</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="c1"># python中dict以hash table方法实现
-</span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
-            <span class="n">hashTable</span><span class="p">[</span><span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">i</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
-            <span class="n">res</span> <span class="o">=</span> <span class="n">target</span> <span class="o">-</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-            <span class="k">if</span> <span class="n">res</span> <span class="ow">in</span> <span class="n">hashTable</span> <span class="ow">and</span> <span class="n">hashTable</span><span class="p">[</span><span class="n">res</span><span class="p">]</span> <span class="o">!=</span> <span class="n">i</span><span class="p">:</span>
-                <span class="k">return</span> <span class="p">([</span><span class="n">i</span><span class="p">,</span> <span class="n">hashTable</span><span class="p">[</span><span class="n">res</span><span class="p">]])</span>
-        <span class="k">raise</span> <span class="nb">Exception</span><span class="p">(</span><span class="s">'No solution'</span><span class="p">)</span>
-        <span class="c1">#异常处理
-</span></code></pre></div></div>
-
-<h3 id="tip">Tip</h3>
-<ul>
-  <li>关注异常情况的处理</li>
-  <li>了解语言内建数据结构的实现方法
-    <ul>
-      <li>python中dict以hash table方法实现</li>
-    </ul>
-  </li>
 </ul>
 
   </div><!-- /.entry-content -->
