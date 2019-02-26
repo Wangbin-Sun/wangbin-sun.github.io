@@ -18,7 +18,7 @@ image:
 - [Historical Wave] cybernetics -> connectionism + neural networks -> deep learning
 
 # Chap. 4 Numerical Computation
-- [Poor condition] For $A\in R^{n\times n}$, its condition number is $max_{i,j}\left (\left |\frac{ \lambda_i}{\lambda_j}\right | \right )$.When this number is large, matrix inversion is particularly sensitive to error in the input.
+- [Poor condition] For $A\in R^{n\times n}$, its condition number is $max_{i,j}(| \frac{ \lambda_i}{\lambda_j} |)$.When this number is large, matrix inversion is particularly sensitive to error in the input.
 - [order of optimizaiton] Optimization algorithms that use only the gradient, such as gradient descent, are called first-order optimization algorithms. Optimization algorithms that also use the Hessian matrix, such as Newton’s method, are called second-order optimization algorithms 
 
 ## PROBLEM-4
@@ -59,11 +59,11 @@ image:
 
 ## PROBLEM-6
 - Cross-entropy的计算与其本质，与条件熵的区别？交叉熵比MSE好在哪里？
-    - D(p||q) = H(p) + 交叉熵H(p,q)。最小化DL Divergence等同于最小化交叉熵。
+    - D(p\| \| q) = H(p) + 交叉熵H(p,q)。最小化DL Divergence等同于最小化交叉熵。
 - 为什么最大似然估计能够学习条件概率？
     - 本身就以条件概率的形式表示 
 - 线性单元输出为何能表示高斯分布？为什么最大化log似然与最小化MSE等价？
-    - min -Elog(y|x) 可推导成 min E(y - y^)^2 
+    - min -Elog(y\| x) 可推导成 min E(y - y^)^2 
 - 混合密度网络是如何学习的？其中的高斯分布、协方差矩阵、精度矩阵有什么关系？
     - A: $N(x;\mu;\sigma^2) = \sqrt{\frac{1}{2\pi\sigma^2}}exp(-\frac{1}{2\sigma^2}(x-\mu)^2)$ 高斯分布需要求标准差平方的倒数，引入精度$\beta\in(0,\infty)$避免计算，原本的分布转变成$N(x;\mu;\beta^{-1}) = \sqrt{\frac{\beta}{2\pi}}exp(-\frac{1}{2}\beta(x-\mu)^2)$。多维高斯分布的协方差矩阵同样可转变成精度矩阵，更为高效，无需求逆。由$N(x;\mu;\Sigma) = \sqrt{\frac{1}{(2\pi)^ndet(\Sigma)}}exp(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu))$转变成$N(x;\mu;\beta^{-1}) = \sqrt{\frac{det(\beta)}{(2\pi)^n}}exp(-\frac{1}{2}(x-\mu)^T\beta(x-\mu))$
 - 矩阵表示的反向传播推导？
@@ -92,7 +92,7 @@ image:
     - Boosting, on the contrary, drives the capacity up.
 - [Dropout] Similar to bagging,  it provides a computationally inexpensive but powerful method of regularizing a broad family of models 
     - take advantage of shared weight from parental structure.
-    - [weight scaling inference rule] approximate $p_{ensemble}$ by evaluating $p(y|x)$ in the model with all units, then multiply the weight with the probability of including the unit.
+    - [weight scaling inference rule] approximate $p_{ensemble}$ by evaluating $p(y\| x)$ in the model with all units, then multiply the weight with the probability of including the unit.
         - ensure that the expected total input to a unit at test time is roughly the same as the expected total input to that unit at train time 
 - [Adversarial training]  explicitly introduce a local constancy prior into supervised neural nets. 
 
@@ -102,7 +102,7 @@ image:
 - reproject重投影与参数惩罚、显式约束的关系？
     - 重投影是和梯度下降算法相关的 
 - 半监督学习中，生成模型、判别模型的关系？参数共享的含义是什么？
-    - 生成模型x,y，判别模型y|x；半监督通常是表示学习
+    - 生成模型x,y，判别模型y\| x；半监督通常是表示学习
 - Early stopping 与 L2 regularization的关系推导？
     - Early stopping相当与在逼近无正则化的最优点过程中停下，停留的点为L2下的最优点 (参数选择满足一定条件)
 - 流形的含义是什么，正切传播、双反向传播和对抗训练的关系是什么？
