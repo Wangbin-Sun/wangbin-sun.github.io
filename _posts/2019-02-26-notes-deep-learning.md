@@ -18,7 +18,7 @@ image:
 - [Historical Wave] cybernetics -> connectionism + neural networks -> deep learning
 
 # Chap. 4 Numerical Computation
-- [Poor condition] For $A\in R^{n\times n}$, its condition number is $max_{i,j}(| \frac{ \lambda_i}{\lambda_j} |)$.When this number is large, matrix inversion is particularly sensitive to error in the input.
+- [Poor condition] For $A\in R^{n\times n}$, its condition number is $max_{i,j}(\| \frac{ \lambda _i}{\lambda _j} \|)$.When this number is large, matrix inversion is particularly sensitive to error in the input.
 - [order of optimizaiton] Optimization algorithms that use only the gradient, such as gradient descent, are called first-order optimization algorithms. Optimization algorithms that also use the Hessian matrix, such as Newton’s method, are called second-order optimization algorithms 
 
 ## PROBLEM-4

@@ -1,4 +1,675 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-01-16T15:31:18+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Rendezvous</title><subtitle>A blog recording personal growth</subtitle><entry><title type="html">LeetCode #1~#20</title><link href="http://localhost:4000/leetcode-1-to-20/" rel="alternate" type="text/html" title="LeetCode #1~#20" /><published>2019-01-09T00:00:00+08:00</published><updated>2019-01-09T00:00:00+08:00</updated><id>http://localhost:4000/leetcode-1-to-20</id><content type="html" xml:base="http://localhost:4000/leetcode-1-to-20/">&lt;h2 id=&quot;1-two-sum&quot;&gt;#1 Two Sum&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-02-26T11:51:19+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Rendezvous</title><subtitle>A blog recording personal growth</subtitle><entry><title type="html">Notes-Deep Learning</title><link href="http://localhost:4000/notes-deep-learning/" rel="alternate" type="text/html" title="Notes-Deep Learning" /><published>2019-02-26T00:00:00+08:00</published><updated>2019-02-26T00:00:00+08:00</updated><id>http://localhost:4000/notes-deep-learning</id><content type="html" xml:base="http://localhost:4000/notes-deep-learning/">&lt;h2 id=&quot;notes-of-deep-learning-by-ian-goodfellow-yoshua-bengio-and-aaron-courville&quot;&gt;Notes of “Deep Learning” by Ian Goodfellow, Yoshua Bengio and Aaron Courville&lt;/h2&gt;
+
+&lt;h1 id=&quot;chap-1-introduction&quot;&gt;Chap. 1 Introduction&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;[Solution towards AI] It allows computers to learn from experience and understands the world in terms of &lt;strong&gt;a hierarchy of concepts&lt;/strong&gt;, with each concept defined through its relation to simpler concepts&lt;/li&gt;
+  &lt;li&gt;[Crucial components in Machine Learning] the representation of the data they are given, or called “Feature”
+    &lt;ul&gt;
+      &lt;li&gt;[Representation Learning]  Use machine learning to discover not only the mapping from representation to output but also the representation itself.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Historical Wave] cybernetics -&amp;gt; connectionism + neural networks -&amp;gt; deep learning&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;chap-4-numerical-computation&quot;&gt;Chap. 4 Numerical Computation&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;[Poor condition] For $A\in R^{n\times n}$, its condition number is $max_{i,j}(| \frac{ \lambda _i}{\lambda _j} |)$.When this number is large, matrix inversion is particularly sensitive to error in the input.&lt;/li&gt;
+  &lt;li&gt;[order of optimizaiton] Optimization algorithms that use only the gradient, such as gradient descent, are called first-order optimization algorithms. Optimization algorithms that also use the Hessian matrix, such as Newton’s method, are called second-order optimization algorithms&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;problem-4&quot;&gt;PROBLEM-4&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;牛顿法矩阵形式推导？
+    &lt;ul&gt;
+      &lt;li&gt;牛顿法本质是求解一函数的零点，延伸到这里，求解一阶导数的零点相当于寻找最值。证明可利用“图解”或者二阶泰勒展开。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;KKT条件的推导？
+    &lt;ul&gt;
+      &lt;li&gt;强调互补松弛性&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;chap-6-deep-feedforward-networks&quot;&gt;Chap. 6 Deep Feedforward Networks&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;[Deep Feedforward Networks] also called feedforward neural networks or multilayer perceptrons (MLPs). It does not have feedback connections&lt;/li&gt;
+  &lt;li&gt;[Choose mapping $\phi$ options]
+    &lt;ul&gt;
+      &lt;li&gt;It should be generic, avoiding overfitting&lt;/li&gt;
+      &lt;li&gt;Manually engineer in conventional way&lt;/li&gt;
+      &lt;li&gt;As for deep learning, it is learned&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Nonlinear transformation] usually followed by a fixed nonlinear function called an activation function&lt;/li&gt;
+  &lt;li&gt;[Learning component] like machine learning, including optimizaiton procedure, cost function and model familiy
+    &lt;ul&gt;
+      &lt;li&gt;Difference in optimization, loss function will be nonconvex due to nonlinear propertity of units, so iterative method required&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Gradient-Based Learning] No global convengency assured, and initial parameters are crucial
+    &lt;ul&gt;
+      &lt;li&gt;Maximum cross entropy simplifies the choosing of cost function&lt;/li&gt;
+      &lt;li&gt;Negative log-likelihood helps to solve vanishing gradient problem&lt;/li&gt;
+      &lt;li&gt;mean squared error and mean absolute error often lead to poor results when used with gradient-based optimization&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Output Units] Linear, Sigmoid, Softmax, Other&lt;/li&gt;
+  &lt;li&gt;[Hidden Units] ReLU is widely used(without much consideration)
+    &lt;ul&gt;
+      &lt;li&gt;Although at 0 it is not differentiable, it doesn’t matter as objective won’t arrive it&lt;/li&gt;
+      &lt;li&gt;Most only distinguish on activation function&lt;/li&gt;
+      &lt;li&gt;[Maxout units] Divide the input into k groups and output the maximum.&lt;/li&gt;
+      &lt;li&gt;Before ReLU, logistic sigmoid and hyperbolic tangent is used as activation function&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Architecture] main consideration is on depth and width
+    &lt;ul&gt;
+      &lt;li&gt;[Universal Approximation Properties] a feedforward network introduced here can approximate any Borel measurable function&lt;/li&gt;
+      &lt;li&gt;Two core process, learn and generalize&lt;/li&gt;
+      &lt;li&gt;Hidden lay with activation function can be regared as “fold” the complex space
+        &lt;ul&gt;
+          &lt;li&gt;In general, deep model leads to high generalization&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Backpropagation] Information flow back to help calculate the gradient
+    &lt;ul&gt;
+      &lt;li&gt;Not only vectors, all tensors can use this method&lt;/li&gt;
+      &lt;li&gt;it performs on the order of one Jacobian product per node in the graph&lt;/li&gt;
+      &lt;li&gt;Two categories: symbol-to-symbol and symbol-to-numeric, the former introduces the computational graph&lt;/li&gt;
+      &lt;li&gt;It is a table-filling strategy, a.k.a., dynamic programming&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;problem-6&quot;&gt;PROBLEM-6&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Cross-entropy的计算与其本质，与条件熵的区别？交叉熵比MSE好在哪里？
+    &lt;ul&gt;
+      &lt;li&gt;D(p| | q) = H(p) + 交叉熵H(p,q)。最小化DL Divergence等同于最小化交叉熵。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;为什么最大似然估计能够学习条件概率？
+    &lt;ul&gt;
+      &lt;li&gt;本身就以条件概率的形式表示&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;线性单元输出为何能表示高斯分布？为什么最大化log似然与最小化MSE等价？
+    &lt;ul&gt;
+      &lt;li&gt;min -Elog(y| x) 可推导成 min E(y - y^)^2&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;混合密度网络是如何学习的？其中的高斯分布、协方差矩阵、精度矩阵有什么关系？
+    &lt;ul&gt;
+      &lt;li&gt;A: $N(x;\mu;\sigma^2) = \sqrt{\frac{1}{2\pi\sigma^2}}exp(-\frac{1}{2\sigma^2}(x-\mu)^2)$ 高斯分布需要求标准差平方的倒数，引入精度$\beta\in(0,\infty)$避免计算，原本的分布转变成$N(x;\mu;\beta^{-1}) = \sqrt{\frac{\beta}{2\pi}}exp(-\frac{1}{2}\beta(x-\mu)^2)$。多维高斯分布的协方差矩阵同样可转变成精度矩阵，更为高效，无需求逆。由$N(x;\mu;\Sigma) = \sqrt{\frac{1}{(2\pi)^ndet(\Sigma)}}exp(-\frac{1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu))$转变成$N(x;\mu;\beta^{-1}) = \sqrt{\frac{det(\beta)}{(2\pi)^n}}exp(-\frac{1}{2}(x-\mu)^T\beta(x-\mu))$&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;矩阵表示的反向传播推导？
+    &lt;ul&gt;
+      &lt;li&gt;存储中间计算的梯度，用于前一层梯度的传递&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Hessian矩阵在深度学习的应用，另外Krylov方法是？
+    &lt;ul&gt;
+      &lt;li&gt;A: H矩阵可以应用于泰勒级数。 Krylov可以迭代近似求解矩阵的逆、特征值、特征向量（只利用矩阵乘法）&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;矩阵求导如何定义？
+    &lt;ul&gt;
+      &lt;li&gt;基本上是逐元素进行，关键是考虑其排列的方式&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;6.23公式-令y=1/0代入可推导&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;chap-7-regularization-for-deep-learning&quot;&gt;Chap. 7 Regularization for Deep Learning&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;[Nature of Regularization] Regularization of an estimator works by trading increased bias for reduced variance.&lt;/li&gt;
+  &lt;li&gt;[Parameter penalties] Only the weights are imposed penalty, leaving the bias. The bias controls a single variable, the penalty on it may cause under-fitting.
+    &lt;ul&gt;
+      &lt;li&gt;[$L^2$ Regularization] a.k.a., weight decay. Other communities name it ridge regression or Tikhonov regularization.
+        &lt;ul&gt;
+          &lt;li&gt;Decay is along the eigenvector(OF H), the scaling factor is $\frac{\lambda_i}{\lambda_i+\alpha}$, the decay effect is less significant on larger $\lambda_i$.&lt;/li&gt;
+          &lt;li&gt;L2 regularization causes the learning algorithm to “perceive” the input X as having higher variance&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;[$L^1$ Regularization] generating more sparse solution, so it can be used to select feature (eg. LASSO)&lt;/li&gt;
+      &lt;li&gt;Too much weight decay will trap the network in a bad local minimum&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Dataset augmentation] Injecting noise in the input also works
+    &lt;ul&gt;
+      &lt;li&gt;It makes the model more robust.&lt;/li&gt;
+      &lt;li&gt;Label smoothing is imposing on the output, functioning as regularization&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Sparse Representation] Place a penalty on the activations of the units in a neural network, encouraging their activations to be sparse.
+    &lt;ul&gt;
+      &lt;li&gt;Mechanism is the same as parameter regularization, imposing penalty on objective function($\Omega(h)$)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Ensemble techniques] combining several models to achieve low generalization error.
+    &lt;ul&gt;
+      &lt;li&gt;Bagging (short for bootstrap aggregating), helps regularization&lt;/li&gt;
+      &lt;li&gt;Boosting, on the contrary, drives the capacity up.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Dropout] Similar to bagging,  it provides a computationally inexpensive but powerful method of regularizing a broad family of models
+    &lt;ul&gt;
+      &lt;li&gt;take advantage of shared weight from parental structure.&lt;/li&gt;
+      &lt;li&gt;[weight scaling inference rule] approximate $p_{ensemble}$ by evaluating $p(y| x)$ in the model with all units, then multiply the weight with the probability of including the unit.
+        &lt;ul&gt;
+          &lt;li&gt;ensure that the expected total input to a unit at test time is roughly the same as the expected total input to that unit at train time&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Adversarial training]  explicitly introduce a local constancy prior into supervised neural nets.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;problem-7&quot;&gt;PROBLEM-7&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Weight-decay中最优权重的推导与无正则条件下的对比 ;L1解析解的结论推导
+    &lt;ul&gt;
+      &lt;li&gt;利用泰勒展开拟合最优点的二次曲线，讨论权重的表达式。对于L1，同样可利用泰勒公式，通过一定假设大致说明其稀疏性的结论&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;reproject重投影与参数惩罚、显式约束的关系？
+    &lt;ul&gt;
+      &lt;li&gt;重投影是和梯度下降算法相关的&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;半监督学习中，生成模型、判别模型的关系？参数共享的含义是什么？
+    &lt;ul&gt;
+      &lt;li&gt;生成模型x,y，判别模型y| x；半监督通常是表示学习&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Early stopping 与 L2 regularization的关系推导？
+    &lt;ul&gt;
+      &lt;li&gt;Early stopping相当与在逼近无正则化的最优点过程中停下，停留的点为L2下的最优点 (参数选择满足一定条件)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;流形的含义是什么，正切传播、双反向传播和对抗训练的关系是什么？
+    &lt;ul&gt;
+      &lt;li&gt;将聚集的点想像成流形面？可以计算切线之类的……不使用欧式距离来定义&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;整理可以应用的正则表达工具包
+    &lt;ul&gt;
+      &lt;li&gt;见目录&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;chap-8-optimization-for-training-deep-models&quot;&gt;Chap. 8 Optimization for Training Deep Models&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;[Difference]We reduce a different cost function $J(\theta)$ in the hope that doing so will improve P. It is indirect.
+    &lt;ul&gt;
+      &lt;li&gt;We hope to minimize the expectation on the data-generating distribution $p_{data}$: $J^*(\theta) = E_{(x,y)\sim p_{data}}L(f(x;\theta),y)$&lt;/li&gt;
+      &lt;li&gt;However, the true distribution is unknown, so we can only minimize empirical risk instead, which may easily lead to overfitting&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Challenge in Optimization] Optimization problem may be non-convex.
+    &lt;ul&gt;
+      &lt;li&gt;Ill-condition Hessian matrix&lt;/li&gt;
+      &lt;li&gt;Model identifiability issues mean that a neural network cost function can have an extremely large or even uncountably infinite amount of local minima.&lt;/li&gt;
+      &lt;li&gt;For many random functions, in low- dimensional spaces, local minima are common. In higher-dimensional spaces, local minima are rare, and saddle points are more common.
+        &lt;ul&gt;
+          &lt;li&gt;Commonly, saddle points have higher cost than local minima&lt;/li&gt;
+          &lt;li&gt;Newton method is not suitable, as it finds the point where the gradient is zero&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;Using gradient clipping to avoid cliffs with exploding gradients&lt;/li&gt;
+      &lt;li&gt;Choose appropriate surrogate loss function to approximate true loss, and can be more accurately estimated&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Basic algorithm]
+    &lt;ul&gt;
+      &lt;li&gt;[SGD]Learning rate should be smaller as the training process goes
+        &lt;ul&gt;
+          &lt;li&gt;In practice, on iteration $\tau$,$\epsilon_k = (1-\alpha)\epsilon_0+\alpha\epsilon_\tau$,$\alpha = \frac{k}{\tau}$&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;[Momentum] SGD is kind of slow, this method is aimed to accelerate learning.
+        &lt;ul&gt;
+          &lt;li&gt;It solves two problems: poor conditioning of the Hessian matrix and variance in the stochastic gradient&lt;/li&gt;
+          &lt;li&gt;It accumulates the former gradient&lt;/li&gt;
+          &lt;li&gt;Nesterov momentum method apply the current velocity before the gradient evaluated&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;For adapative learning rates algorithms, not much theoretical difference.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Newton method] Approximate the point using 2-order Taloy formular. Calculating the inverse of H as the updating value
+    &lt;ul&gt;
+      &lt;li&gt;Utilizing conjugate directions to avoid calculating inversion
+        &lt;ul&gt;
+          &lt;li&gt;the seaching direction has to be vertical agaist the former one&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;BFGS takes advantage of newton method, while overcomte its shortage(inversion calculation), it performs better on time but memory is required more&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[block coordinate decent] Optimize the variable in term, when there’s more than one optimization variable and the function has good properties like convex&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;problem-8&quot;&gt;PROBLEM-8&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Hessian矩阵在优化中的应用，ill-condition的含义是什么？牛顿法的应用
+    &lt;ul&gt;
+      &lt;li&gt;Hessian就是二阶导数。病态条件使得梯度卡住，梯度不会显著缩小，但二次项增长会超过一个数量级。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;鞍点的梯度定义是什么？
+    &lt;ul&gt;
+      &lt;li&gt;梯度为0，但Hessian矩阵有正负特征值&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;理解Adam算法，矩阶数、偏置修正等
+    &lt;ul&gt;
+      &lt;li&gt;引入指数加权、一二阶矩估计，并修正偏差&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;整理可以应用的优化方法工具包
+    &lt;ul&gt;
+      &lt;li&gt;看目录&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;chap-9-convolutional-networks&quot;&gt;Chap. 9 Convolutional Networks&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;[Convolution operation]x and w are the function of t, $s(t) = (x * w)(t) = \int{x(a)w(t-a)}da$&lt;/li&gt;
+  &lt;li&gt;[Motivation] sparse interactions, parameter sharing and equivariant representations are three import ideas by convoution
+    &lt;ul&gt;
+      &lt;li&gt;[sparse interactions] instead of full connection, node only inteacts with limited number of nodes in the next layer. This leads to the phenonmenan that deep node has a high receptive field, although the connection is indirect.&lt;/li&gt;
+      &lt;li&gt;[parameter sharing] the weight matrix is shared between nodes and layers, which reduce the number of parameters to be estimated&lt;/li&gt;
+      &lt;li&gt;[equivariant representations] the input changes, the output changes in the same way. A function f(x) is equivariant to a function g if f(g(x)) = g(f(x))&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[pooling] a typical layer consists of three stages: convolution stage, detector stage and pooling stage
+    &lt;ul&gt;
+      &lt;li&gt;pooling helps to make the representation invariant. Invariance to local translation identifies the significant feature while discard the location information&lt;/li&gt;
+      &lt;li&gt;Pooling is able to deal with input with different dimension. Summarize the input and it can output the same dimension.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Downsampling] sample only every s(called “stride”) pixels in each direction in the output&lt;/li&gt;
+  &lt;li&gt;[Weight sharing] locally connected layers: no sharing at all; tiled convolution: a sharing list cycling; tranditional convolution: all sharing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;problem-9&quot;&gt;PROBLEM-9&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;在进行convolution, ReLU和pooling后，特征维度的变化是怎么样的？如何选取卷积层的核？卷积层和仿射变换是什么关系？
+    &lt;ul&gt;
+      &lt;li&gt;https://zhuanlan.zhihu.com/p/29119239&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;卷积层的矩阵表示，及反向传播参数推导？
+    &lt;ul&gt;
+      &lt;li&gt;反向传播，核心是一致的&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;chap-10-sequence-modeling-recurrent-and-recursive-nets-&quot;&gt;Chap. 10 Sequence Modeling: Recurrent and Recursive Nets ***&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;[Weight in RNN] Parameter sharing makes it possible to extend and apply the model to examples of different forms&lt;/li&gt;
+  &lt;li&gt;[Back-propagation through time(BPTT)] applied to the unrolled graph with O($\tau$) cost, with connections between hidden layers&lt;/li&gt;
+  &lt;li&gt;[Teacher Forcing] Models that have recurrent connections from their outputs leading back into the model may be trained with Teacher Forcing&lt;/li&gt;
+  &lt;li&gt;The price recurrent networks pay for their reduced number of parameters is that optimizing the parameters may be difficult.&lt;/li&gt;
+  &lt;li&gt;[Bidirectional RNNs] we want to output a prediction of y(t) that may depend on the whole input sequence.
+    &lt;ul&gt;
+      &lt;li&gt;Hidden layers are seperated as two direction&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Recursive Neural Networks] It is a tree structure, rather than simple chain structure like RNN. Actually, it extends the original RNN idea.&lt;/li&gt;
+  &lt;li&gt;[Main challenge] Long-term dependence, which means that gradients propagated over many stages tend to either vanish (most of te time) or explode (rarely, but with much damage to the optimization). It is more significant in the RNN structure.&lt;/li&gt;
+  &lt;li&gt;[Reservoir computing] e.g. “echo state networks”. The recurrent hidden units do a good job of capturing the history of past inputs, and only learn the output weights.
+    &lt;ul&gt;
+      &lt;li&gt;As the input matrix and hidden layer matrix are difficult to learn&lt;/li&gt;
+      &lt;li&gt;Spectral radius is the maximum absolute eigenvalue of Jacobians. It measure the scaling factor.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Gated recurrent unit] create paths through time that have derivatives that neither vanish nor explode.
+    &lt;ul&gt;
+      &lt;li&gt;Leaky units manually choose constant or set them as parameters. Gated RNNs generalize this to connection weights that may change at each time step.&lt;/li&gt;
+      &lt;li&gt;[LSTM cell] LSTM recurrent networks have “LSTM cells” that have an internal recurrence (a self-loop)
+        &lt;ul&gt;
+          &lt;li&gt;Including forget gate, external input gate, output gate&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;problem-10&quot;&gt;PROBLEM-10&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;BPTT和Teacher Forcing的核心区别是什么？为什么计算时间会不同？如何将这两个训练方法结合起来？&lt;/li&gt;
+  &lt;li&gt;BPTT的矩阵梯度传播推导&lt;/li&gt;
+  &lt;li&gt;为什么基于上下文时，模型会出现如此调整？context含义是什么？&lt;/li&gt;
+  &lt;li&gt;已有架构的梳理，输入长度？输出长度？&lt;/li&gt;
+  &lt;li&gt;谱半径的理解，反向传播中扰动的意义？扰动的缩放含义是？&lt;/li&gt;
+  &lt;li&gt;回声状态网络中，动态系统如何应用？Jacobian矩阵的角色是什么？&lt;/li&gt;
+  &lt;li&gt;LSTM矩阵表示推导？结构整理&lt;/li&gt;
+  &lt;li&gt;RNN优化的核心，解决长期依赖问题的整理？包括梯度爆炸和梯度消失&lt;/li&gt;
+  &lt;li&gt;基于外显记忆的NTM是如何实现的，如何评估记忆单元？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;chap-11-practical-methogology&quot;&gt;Chap. 11 Practical Methogology&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;[Recommended Procedure] Determine the goal -&amp;gt; Estabilish a pipeline -&amp;gt; Instrument the system -&amp;gt; Iteratively make changes&lt;/li&gt;
+  &lt;li&gt;[Performance Metrics] Choose the ideal level of performance; choose the metric used
+    &lt;ul&gt;
+      &lt;li&gt;PR curve is used when precision and recall are calculated&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Parameter tuning]
+    &lt;ul&gt;
+      &lt;li&gt;[Manually] Effective capacity constrained by :the representational capacity of the model, the ability of the learning algorithm to successfully minimize the cost function used to train the model, and the degree to which the cost function and training procedure regularize the model
+        &lt;ul&gt;
+          &lt;li&gt;Learning rate is the most important hyper-parameter&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;problem-11&quot;&gt;PROBLEM-11&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;总结实践的方法，注意细节点？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;chap-12-application&quot;&gt;Chap. 12 Application&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;[Large Scale Learning]
+    &lt;ul&gt;
+      &lt;li&gt;[GPU] have a high degree of parallelism and high memory bandwidth, at the cost of having a lower clock speed and less branching capability relative to traditional CPUs.&lt;/li&gt;
+      &lt;li&gt;[asynchronous stochastic gradient descent]  allow multiple machines to compute multiple gradient descent steps in parallel&lt;/li&gt;
+      &lt;li&gt;[Dynamic Structure]  Data-processing systems can dynamically determine which subset of many neural networks should be run on a given input
+        &lt;ul&gt;
+          &lt;li&gt;use a cascade of classifiers&lt;/li&gt;
+          &lt;li&gt;use a neural network called the gater&lt;/li&gt;
+          &lt;li&gt;use a switch&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Computor Vision]
+    &lt;ul&gt;
+      &lt;li&gt;[Preprocession]
+        &lt;ul&gt;
+          &lt;li&gt;[Contrast Normalization] includes Global contrast normalization (project the data point to a sphere) , sphering (or whitening) and Local contrast normalizaiton(focus on the edges)&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Speech Recognition]
+    &lt;ul&gt;
+      &lt;li&gt;[Classic Models] HMM, GMM, RBMs&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Natural Language Processing]
+    &lt;ul&gt;
+      &lt;li&gt;[n-gram] requries smoothing&lt;/li&gt;
+      &lt;li&gt;[word embedding] a kind of neural language model(NLM)&lt;/li&gt;
+      &lt;li&gt;[High dimensional outputs]
+        &lt;ul&gt;
+          &lt;li&gt;Use of a Short List&lt;/li&gt;
+          &lt;li&gt;Hierarchical Softmax&lt;/li&gt;
+          &lt;li&gt;Importance Sampling
+            &lt;ul&gt;
+              &lt;li&gt;not only useful for speeding up models with large softmax outputs. More generally, it is useful for accelerating training with large sparse output layers&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;problem-12&quot;&gt;PROBLEM-12&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;分层SoftMax的机制是什么？如何展开训练？对于模型的影响有哪些？（联想到了huffman编码）&lt;/li&gt;
+  &lt;li&gt;重要采样的公式理解与实现？重要采样对于稀疏向量处理的优势？
+    &lt;ul&gt;
+      &lt;li&gt;softmax更快采样&lt;/li&gt;
+      &lt;li&gt;n-gram的例子含义&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;chap-13-linear-factor-models&quot;&gt;Chap. 13 Linear Factor Models&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;[Linear Factor Model] the use of a stochastic linear decoder function that generates x by adding noise to a linear transformation of h.
+    &lt;ul&gt;
+      &lt;li&gt;Different models make differenet choices about the noise and the prior p(h)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Probabilistic PCA] Assume the conditional variances equal to each other, i.e., the nose is a multivariate Gaussian noise.
+    &lt;ul&gt;
+      &lt;li&gt;most variations in the data can be captured by the latent variables h, up to some small residual reconstruction error $\sigma^2$&lt;/li&gt;
+      &lt;li&gt;probabilistic PCA becomes PCA as $\sigma \to 0$.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Independent Component Analysis] Model linear factors that seeks to separate an observed signal (fully independent) into many underlying signals that are scaled and added together to form the observed data.&lt;/li&gt;
+  &lt;li&gt;[Slow Feature Analysis] a linear factor model that uses information from time signals to learn invariant features
+    &lt;ul&gt;
+      &lt;li&gt;[Slowness Principle] the important characteristics of scenes change very slowly compared to the individual measurements that make up a description of a scene.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Sparse coding]  an unsupervised feature learning and feature extraction mechanism
+    &lt;ul&gt;
+      &lt;li&gt;Sparse coding is not a parametric autoencoder.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;problem-13&quot;&gt;PROBLEM-13&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;主成分分析的矩阵推导（第二章）？&lt;/li&gt;
+  &lt;li&gt;PCA中，x的高斯分布参数推导？PCA是去掉噪声的因子分析吗？需要对于线性变换有秩的要求吗？&lt;/li&gt;
+  &lt;li&gt;PCA、概率PCA的关系？
+    &lt;ul&gt;
+      &lt;li&gt;A：PCA是将x进行线性组合，构造分量x’；而概率PCA是基于因子分析的内容，因子分析是寻找潜分量h，使得h的线性组合加上噪声等于x，而概率PCA则是令噪声的方差等于0。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;为什么在ICA中不用高斯分布，W会遇到什么问题？
+    &lt;ul&gt;
+      &lt;li&gt;因为高斯的线性组合仍然是高斯，所以分解不唯一。ICA的目求出W&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;为什么稀疏编码不能使用最大似然法训练模型？&lt;/li&gt;
+  &lt;li&gt;稀疏编码如何推导至L1范数的优化目标？&lt;/li&gt;
+  &lt;li&gt;生成模型的含义？
+    &lt;ul&gt;
+      &lt;li&gt;联合概率；判别模型是条件概率&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;chap-14-autoencoders&quot;&gt;Chap. 14 Autoencoders&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;[autoencoder] a neural network that is trained to attempt to copy its input to its output
+    &lt;ul&gt;
+      &lt;li&gt;two parts: an encoder function h = f(x) and a decoder that produces a reconstruction r = g(h).&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[undercomplete autoencoder] code dimension is less than the input dimension&lt;/li&gt;
+  &lt;li&gt;[Regularized autoencoder] use a loss function that encourages the model to have other properties besides the ability to copy its input to its output
+    &lt;ul&gt;
+      &lt;li&gt;[Sparse autoencoder] impose a sparsity penalty, although it is different from weight decay&lt;/li&gt;
+      &lt;li&gt;[Denoising autoencoder (DAE)] noise is added into input, and DAE must eliminate the noise itself
+        &lt;ul&gt;
+          &lt;li&gt;By sampling, learn the distribution&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[contractive autoencoder] Regularize the derivative of f&lt;/li&gt;
+  &lt;li&gt;[Predictive sparse decomposition]  a hybrid of sparse coding and parametric autoencoders&lt;/li&gt;
+  &lt;li&gt;Autoencoder can be applied in dimensionality reduction, which will benefit informaiton retrieval tasks, classification tasks&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;problem-14&quot;&gt;PROBLEM-14&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;MAP 近似贝叶斯推断是什么含义？为什么前馈网络的权重衰减属于这一类？正则自编码器的正则为何含义不同？&lt;/li&gt;
+  &lt;li&gt;随机编码器、随机解码器的核心是什么？引入的概率分布与其他自编码器有什么区别？&lt;/li&gt;
+  &lt;li&gt;DAE的loss function为何是-log
+    &lt;ul&gt;
+      &lt;li&gt;最大似然？&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;基于RBM的模型和去噪得分匹配的关系是什么？自编码器又有什么关系？为何重构函数是g(f(x))&lt;/li&gt;
+  &lt;li&gt;自编码器与流形学习之间的关系&lt;/li&gt;
+  &lt;li&gt;非参模型、分布式表示、深度学习捕获流形结构的区别&lt;/li&gt;
+  &lt;li&gt;CAE感觉有点类似泰勒展开，用线性拟合非线性？&lt;/li&gt;
+  &lt;li&gt;正则自编码器的两股力量推动学习，不同自模型似乎不太一样？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;chap-15-representation-learning&quot;&gt;Chap. 15 Representation Learning&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Shared presentation benefits the learning process
+    &lt;ul&gt;
+      &lt;li&gt;The core idea of representation learning is that the same representation may be useful in both settings.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Greedy layer-wise unsupervised pretraining] a representation learned for one task can sometimes be useful for another task
+    &lt;ul&gt;
+      &lt;li&gt;Every layer is optimized individually&lt;/li&gt;
+      &lt;li&gt;In supervised learning, it can be viewed as a regularizer and a form of parameter initialization&lt;/li&gt;
+      &lt;li&gt;Unsupervised pretraining contains massive hyper-parameters, which cannot show effect before supervised learning&lt;/li&gt;
+      &lt;li&gt;Nowadays, apart form NLP, most algorithms do not contain this part&lt;/li&gt;
+      &lt;li&gt;Unsupervised pretraining extends to supervised pretraining&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Transfer learning] similar as multi-task learning, sharing input structure or output structure&lt;/li&gt;
+  &lt;li&gt;Many deep learning algorithms are motivated by the assumption that the hidden units can learn to represent the underlying causal factors that explain the data&lt;/li&gt;
+  &lt;li&gt;[Distributed representation] different from symbolic one as it can generalize due to shared attributes
+    &lt;ul&gt;
+      &lt;li&gt;nondistributed models generalize only locally via the smoothness prior, making it difficult to learn a complicated function with more peaks and troughs than the available number of examples&lt;/li&gt;
+      &lt;li&gt;information exists between labels, and they are not “atom”s but combinition of hidden features&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;problem-15&quot;&gt;Problem-15&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;为什么具有更多独立性的分布更容易建模？&lt;/li&gt;
+  &lt;li&gt;表示学习中贝叶斯相关的概率理解？或者说核心？因果因子和解释因子的本质区别？&lt;/li&gt;
+  &lt;li&gt;通用正则化策略，与前面章节的正则化有区别吗？
+    &lt;ul&gt;
+      &lt;li&gt;似乎这里更偏向表示学习？&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;chap16-structured-probabilistic-models-for-deep-learning&quot;&gt;Chap.16 Structured Probabilistic Models for Deep Learning&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[structured probabilistic model] describe a probability distribution, using a graph to describe which random variables in the probability distribution interact with each other directly.&lt;/li&gt;
+  &lt;li&gt;Structured probabilistic models provide a formal framework for modeling only direct interactions between random variables.
+    &lt;ul&gt;
+      &lt;li&gt;reduces the number of parameters and computational cost during model storage, model inference and model sampling&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;[Directed models] As long as each variable has few parents in the graph, the distribution can be represented with very few parameters.&lt;/li&gt;
+  &lt;li&gt;[Undirected models] Edge exists when two variables affect each other without direction
+    &lt;ul&gt;
+      &lt;li&gt;Z is usually intractable in the context of deep learning&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;We want to choose a graph that implies as many independences as possible, without implying any independences that do not actually exist.&lt;/li&gt;
+  &lt;li&gt;[Ancestral Sampling] directed graphical models has a a simple and efficient procedure to produce a sample from the joint distribution represented by the model&lt;/li&gt;
+  &lt;li&gt;The primary advantage of using structured probabilistic models is that they allow us to dramatically reduce the cost of representing probability distributions as well as learning and inference.&lt;/li&gt;
+  &lt;li&gt;Use latent variable to reduce complexity. Latent variables have advantages in efficiently capturing p(v).&lt;/li&gt;
+  &lt;li&gt;Approximate inference is applied,, as the complexity in deep learning, even using probabilistic graph to represent it.&lt;/li&gt;
+  &lt;li&gt;Latent variables are given certain meaning in the traditional graph model, while in deep learning they have no pre-definition
+    &lt;ul&gt;
+      &lt;li&gt;Traditional approaches to graphical models typically aim to maintain the tractability of exact inference.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;problem-16&quot;&gt;Problem-16&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;有向图采样时，为什么存在“其他变量”的影响？如何理解&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;chap17-monte-carlo-methods&quot;&gt;Chap.17 Monte Carlo Methods&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;deterministic approximate algorithms or Monte Carlo approximations are used in machine learning&lt;/li&gt;
+  &lt;li&gt;The variance of importance sampling is sensitive to distribution q&lt;/li&gt;
+  &lt;li&gt;In deep learning, when p(x) is undirected model, it is hard to find a good importance sampling q(x)
+    &lt;ul&gt;
+      &lt;li&gt;[Markov Chain Monte Carlo] using energy-based model to sample
+        &lt;ul&gt;
+          &lt;li&gt;use markov chain to avoid “chicken-and-egg problem” in undirected graph.&lt;/li&gt;
+          &lt;li&gt;Ancestral sampling is a topological way to implement&lt;/li&gt;
+          &lt;li&gt;MCMC has large time cost, especially for burning-in and avoiding relevant samples&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;MCMC easily stuck on one mode
+    &lt;ul&gt;
+      &lt;li&gt;using tempering to mix&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;problem-17&quot;&gt;Problem-17&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;比较（有/无偏）重要采样，MCMC，祖先采样以及（块）Gibbs采样。其中的q(x)如何得到？如何应用基于能量的模型？&lt;/li&gt;
+  &lt;li&gt;如何理解MCMC是带有噪声的对能量函数进行梯度下降，能量函数的意义是什么？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;chap-18-confronting-the-partition-function&quot;&gt;Chap. 18 Confronting the Partition Function&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Partition functions are integral of probability&lt;/li&gt;
+  &lt;li&gt;The main cost of the naive MCMC algorithm is the cost of burning in the Markov chains from a random initialization at each step&lt;/li&gt;
+  &lt;li&gt;Using pseudolikelihood to approximate log likelihood&lt;/li&gt;
+  &lt;li&gt;Score matching derivave models similar to certain metrics on true model, while denoising score match considers the unavalability of true model and use a noised model instead&lt;/li&gt;
+  &lt;li&gt;Noise contrastive estimation is based on the idea that a good generative model should be able to distinguish data from noise&lt;/li&gt;
+  &lt;li&gt;Annealed importance sampling (AIS) and bridge sampling addresses the shortcomings of importance sampling&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;problem-18&quot;&gt;Problem-18&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;正相推高，负相压低数据分布概率的原理&lt;/li&gt;
+  &lt;li&gt;Naive MCMC，CD算法，PCD算法之间的比较&lt;/li&gt;
+  &lt;li&gt;伪似然与负相降低之间的关系&lt;/li&gt;
+  &lt;li&gt;得分匹配与平方误差的表达式较为相近，其内在是否存在关系？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;chap-19-approximate-inference&quot;&gt;Chap. 19 Approximate Inference&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Interaction between hidden variables make it hard to inference (conditional probability) accurately and efficiently&lt;/li&gt;
+  &lt;li&gt;Evidence lower bound (ELBO) helps to transform the original inference problem into a optimization problem&lt;/li&gt;
+  &lt;li&gt;MAP inference means choose the most likely value as the variable&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;problem-19&quot;&gt;Problem-19&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;变分推断的核心是什么？找到一个p来拟合吗？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;chap-20-deep-generative-models&quot;&gt;Chap. 20 Deep Generative Models&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Boltzman machines were an “connectionist” approach, and they are energy-based models&lt;/li&gt;
+  &lt;li&gt;Learning algorithms for Boltzmann macines are based on maximum likelihood&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;problem-20&quot;&gt;Problem-20&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;生成模型在算法中的具体应用&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="machine learning" /><category term="deep learning" /><category term="book" /><summary type="html">Notes of “Deep Learning” by Ian Goodfellow, Yoshua Bengio and Aaron Courville</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/images/abstract-4.jpg" /></entry><entry><title type="html">LeetCode #1~#20</title><link href="http://localhost:4000/leetcode-1-to-20/" rel="alternate" type="text/html" title="LeetCode #1~#20" /><published>2019-01-09T00:00:00+08:00</published><updated>2019-01-09T00:00:00+08:00</updated><id>http://localhost:4000/leetcode-1-to-20</id><content type="html" xml:base="http://localhost:4000/leetcode-1-to-20/">&lt;h2 id=&quot;1-two-sum&quot;&gt;#1 Two Sum&lt;/h2&gt;
 
 &lt;h3 id=&quot;暴力求解&quot;&gt;暴力求解&lt;/h3&gt;
 &lt;p&gt;时间$O(n^2)$&lt;br /&gt;
@@ -301,6 +972,341 @@
 &lt;ul&gt;
   &lt;li&gt;对变量更新时，检查其是否会影响其他变量，需要合理安排次序甚至加入临时变量&lt;/li&gt;
   &lt;li&gt;数学库的函数需要加载&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;5-longest-palindromic-substring&quot;&gt;#5 Longest Palindromic Substring&lt;/h2&gt;
+
+&lt;h3 id=&quot;中心搜索&quot;&gt;中心搜索&lt;/h3&gt;
+
+&lt;p&gt;搜索回文子串的中心位置，包括两类，一是字母本身作为中心，二是两个字母间隙作为中心。&lt;br /&gt;
+得到中心后，向两边拓展，得到最长的串。并在后续搜索中，进行适当的剪枝。&lt;br /&gt;
+时间$O(n^2)$&lt;br /&gt;
+空间$O(n)$&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;longestPalindrome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+        :type s: str
+        :rtype: str
+        &quot;&quot;&quot;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;&quot;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;lenMax&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;strMax&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;center&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;center&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;center&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; \
+                &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;center&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;center&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lenMax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;lenMax&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;strMax&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;center&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lenMax&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lenMax&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;center&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;center&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; \
+                &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;center&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;center&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lenMax&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;lenMax&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;strMax&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;center&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;strMax&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;tip-4&quot;&gt;Tip&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;尽可能剪枝降低时间复杂度&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;6-zigzag-conversion&quot;&gt;#6 ZigZag Conversion&lt;/h2&gt;
+
+&lt;h3 id=&quot;数学规律&quot;&gt;数学规律&lt;/h3&gt;
+&lt;p&gt;发现经过变换后，每行的两个数下标依次增加为$2(numRows - i) - 2$与$2i$，其中$i$为行数。&lt;br /&gt;
+时间$O(n)$&lt;br /&gt;
+空间$O(n)$&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;convert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numRows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+        :type s: str
+        :type numRows: int
+        :rtype: str
+        &quot;&quot;&quot;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numRows&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numRows&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;delta1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numRows&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;delta2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta1&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;delta2&lt;/span&gt;
+                        &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cur&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;tip-5&quot;&gt;Tip&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;注意边界情况，不同输入变量都得考虑&lt;/li&gt;
+  &lt;li&gt;布尔类型注意大小写True与False&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;7-reverse-integer&quot;&gt;#7 Reverse Integer&lt;/h2&gt;
+
+&lt;h3 id=&quot;逐位累计&quot;&gt;逐位累计&lt;/h3&gt;
+&lt;p&gt;输入的数字模10可得到末尾数字，记录，随后再整除10可略去末尾数字&lt;br /&gt;
+时间$O(n)$&lt;br /&gt;
+空间$O(n)$&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;reverse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+        :type x: int
+        :rtype: int
+        &quot;&quot;&quot;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;upLim&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;downLim&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;upLim&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;downLim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;rev&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;rev&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rev&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;rev&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rev&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rev&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;upLim&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rev&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;downLim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rev&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;tip-6&quot;&gt;Tip&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;给定限制条件，同时需要判断输入限制和输出限制&lt;/li&gt;
+  &lt;li&gt;取反为not&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;8-string-to-integer-atoi&quot;&gt;#8 String to Integer (atoi)&lt;/h2&gt;
+
+&lt;h3 id=&quot;逐位判断&quot;&gt;逐位判断&lt;/h3&gt;
+&lt;p&gt;依据题目给定条件依次逐位判断，利用ord()取字符的ASCII码 &lt;br /&gt;
+时间$O(n)$&lt;br /&gt;
+空间$O(n)$&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;myAtoi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+        :type str: str
+        :rtype: int
+        &quot;&quot;&quot;&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;pointer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pointer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pointer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;' '&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;pointer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pointer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pointer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'+'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;pointer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pointer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'-'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;pointer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;elif&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pointer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isdigit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;INT_MAX&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;INT_MIN&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;31&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pointer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pointer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isdigit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;ord&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pointer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;48&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;pointer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INT_MAX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INT_MAX&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;INT_MIN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;tip-7&quot;&gt;Tip&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;边界情况的处理&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;9-palindrome-number&quot;&gt;#9 Palindrome Number&lt;/h2&gt;
+
+&lt;h3 id=&quot;逐位翻转&quot;&gt;逐位翻转&lt;/h3&gt;
+&lt;p&gt;通过不断对10取余，整除10逐位得到其翻转的数字，与原始数字比较判断是否回文&lt;br /&gt;
+时间$O(n)$&lt;br /&gt;
+空间$O(n)$&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isPalindrome&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&quot;&quot;&quot;
+        :type x: int
+        :rtype: bool
+        &quot;&quot;&quot;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;inputNum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;revNum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inputNum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;revNum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;revNum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inputNum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;inputNum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inputNum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;revNum&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;tip-8&quot;&gt;Tip&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;关注题设限制要求&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;10-regular-expression-matching&quot;&gt;#10 Regular Expression Matching&lt;/h2&gt;
+
+&lt;h3 id=&quot;递归逐位匹配&quot;&gt;递归逐位匹配&lt;/h3&gt;
+&lt;p&gt;从字符串头开始，匹配各位字符，出现.和*时遍历各种可能性&lt;br /&gt;
+时间N/A~$O(n!)$&lt;br /&gt;
+空间N/A~$O(n!)$&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;isMatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bool&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'*'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'*'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'.'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;pointerS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pointerS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isMatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pointerS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]):&lt;/span&gt;
+                        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;pointerS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isMatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]):&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;n&quot;&gt;pointerS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pointerS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pointerS&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isMatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pointerS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]):&lt;/span&gt;
+                        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;pointerS&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isMatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]):&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'.'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isMatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]):&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+                    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;isMatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]):&lt;/span&gt;
+                        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;动态规划&quot;&gt;*动态规划&lt;/h3&gt;
+&lt;p&gt;发现存在重复求解的函数请求，可以将其保存，推导出显式公式，从而降低复杂度&lt;br /&gt;
+时间$O(n^2)$&lt;br /&gt;
+空间$O(n^2)$&lt;/p&gt;
+
+&lt;h3 id=&quot;tip-9&quot;&gt;Tip&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;一些简便写法
+    &lt;ul&gt;
+      &lt;li&gt;if text: 等同于 if len(text) &amp;gt; 0&lt;/li&gt;
+      &lt;li&gt;bool(text)可直接得到是否为空字符串&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;在进行递归时，考虑特定的循环是否有必要&lt;/li&gt;
+  &lt;li&gt;避免递归重复求解，使用DP来存储结果降低时间复杂度&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;11-container-with-most-water&quot;&gt;#11 Container With Most Water&lt;/h2&gt;
+
+&lt;h3 id=&quot;暴力求解-1&quot;&gt;暴力求解&lt;/h3&gt;
+&lt;p&gt;计算柱子两两构成的面积，比较大小&lt;br /&gt;
+时间$O(n^2)$&lt;br /&gt;
+空间$O(1)$&lt;/p&gt;
+
+&lt;h3 id=&quot;搜索注水高度&quot;&gt;搜索注水高度&lt;/h3&gt;
+&lt;p&gt;对柱子高度排序，依次降低目标注水高度，维护最边两侧的柱子坐标，面积即可通过柱子坐标差乘注水高度得到&lt;br /&gt;
+时间$O(n\log n)$&lt;br /&gt;
+空间$O(1)$&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;maxArea&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;List&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;sortedHeightLoc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sorted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;enumerate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;lambda&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reverse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;pointer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sortedHeightLoc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sortedHeightLoc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sortedHeightLoc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sortedHeightLoc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;maxArea&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortedHeightLoc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pointer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortedHeightLoc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pointer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortedHeightLoc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pointer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;maxArea&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;maxArea&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;right&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sortedHeightLoc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pointer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;pointer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;maxArea&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;两侧逼近&quot;&gt;*两侧逼近&lt;/h3&gt;
+&lt;p&gt;两侧维护指针作为柱子两侧，初始化是最两侧的柱子；随后，较矮的柱子指针不断内移，存在增加面积的可能性&lt;br /&gt;
+时间$O(n)$&lt;br /&gt;
+空间$O(1)$&lt;/p&gt;
+
+&lt;h3 id=&quot;tip-10&quot;&gt;Tip&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;在设定目标复杂度的算法后，考虑常见的遍历、运算等操作和特定的小技巧，如双指针维护等&lt;/li&gt;
+  &lt;li&gt;排序中enumerate和lambda返回下标的用法&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;12-integer-to-roman&quot;&gt;#12 Integer to Roman&lt;/h2&gt;
+
+&lt;h3 id=&quot;依次取模&quot;&gt;依次取模&lt;/h3&gt;
+&lt;p&gt;存储每个可能的字符及其值，随后不断取模并记录可能使用的字符个数，将字符组合起来得到结果&lt;br /&gt;
+时间$O(1)$&lt;br /&gt;
+空间$O(1)$&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;intToRoman&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;''&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;valueSymbol&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'M'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;900&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'CM'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;500&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'D'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;400&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'CD'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; \
+                      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'C'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;90&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'XC'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;50&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'L'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'XL'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; \
+                      &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'X'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'IX'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'V'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'IV'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'I'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;valueSymbolDict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;valueSymbol&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;valueList&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sorted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;valueSymbolDict&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;reverse&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;valueList&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;valueSymbolDict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;num&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;output&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;tip-11&quot;&gt;Tip&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;寻找数字构成规律&lt;/li&gt;
 &lt;/ul&gt;</content><author><name></name></author><category term="algorithm" /><category term="python" /><category term="leetcode" /><summary type="html">#1 Two Sum</summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/images/abstract-9.jpg" /></entry><entry><title type="html">Notes-Statistical Natural Language Process</title><link href="http://localhost:4000/notes-statistical-natural-language-process/" rel="alternate" type="text/html" title="Notes-Statistical Natural Language Process" /><published>2019-01-08T00:00:00+08:00</published><updated>2019-01-08T00:00:00+08:00</updated><id>http://localhost:4000/notes-statistical-natural-language-process</id><content type="html" xml:base="http://localhost:4000/notes-statistical-natural-language-process/">&lt;h2 id=&quot;notes-of-统计自然语言处理-by-宗成庆&quot;&gt;Notes of 《统计自然语言处理》 by 宗成庆&lt;/h2&gt;
 
 &lt;h2 id=&quot;第1章-绪论&quot;&gt;第1章 绪论&lt;/h2&gt;
