@@ -1472,6 +1472,306 @@
   <li>寻找数字构成规律</li>
 </ul>
 
+<h2 id="13-roman-to-integer">#13 Roman to Integer</h2>
+
+<h3 id="按位判断值正负">按位判断值正负</h3>
+<p>若当前字符的值小于下一个字符的值，则减去该值；否则加上该值<br />
+时间$O(1)$<br />
+空间$O(1)$</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">romanToInt</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">symbolValue</span> <span class="o">=</span> <span class="p">[(</span><span class="s">'I'</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">'V'</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="s">'X'</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="s">'L'</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> \
+                      <span class="p">(</span><span class="s">'C'</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="s">'D'</span><span class="p">,</span> <span class="mi">500</span><span class="p">),</span> <span class="p">(</span><span class="s">'M'</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)]</span>
+        <span class="n">symbolValueDict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">symbolValue</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">preValue</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)):</span>
+            <span class="n">curValue</span> <span class="o">=</span> <span class="n">symbolValueDict</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span>
+            <span class="k">if</span> <span class="n">preValue</span> <span class="o">&lt;</span> <span class="n">curValue</span><span class="p">:</span>
+                <span class="n">output</span> <span class="o">-=</span> <span class="n">preValue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">output</span> <span class="o">+=</span> <span class="n">preValue</span>
+            <span class="n">preValue</span> <span class="o">=</span> <span class="n">curValue</span>
+        <span class="n">output</span> <span class="o">+=</span> <span class="n">preValue</span>
+        <span class="k">return</span> <span class="n">output</span>
+</code></pre></div></div>
+
+<h3 id="tip-12">Tip</h3>
+<ul>
+  <li>从双向转化中寻找规律</li>
+</ul>
+
+<h2 id="14-longest-common-prefix">#14 Longest Common Prefix</h2>
+
+<h3 id="按位判断">按位判断</h3>
+<p>依次遍历各位，直到出现不同字符<br />
+时间$O(n)$<br />
+空间$O(n)$</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">longestCommonPrefix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">strs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">strs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="s">""</span>
+        <span class="n">lenMax</span> <span class="o">=</span> <span class="mf">1e9</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">strs</span><span class="p">:</span>
+            <span class="n">lenMax</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">lenMax</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">i</span><span class="p">))</span>
+        <span class="n">pointer</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">pointer</span> <span class="o">==</span> <span class="n">lenMax</span><span class="p">:</span>
+                <span class="n">pointer</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="k">break</span>
+            <span class="n">char</span> <span class="o">=</span> <span class="n">strs</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">pointer</span><span class="p">]</span>
+            <span class="n">flag</span> <span class="o">=</span> <span class="bp">True</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">strs</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">strs</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">pointer</span><span class="p">]</span> <span class="o">!=</span> <span class="n">char</span><span class="p">:</span>
+                    <span class="n">flag</span> <span class="o">=</span> <span class="bp">False</span>
+                    <span class="k">break</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">flag</span><span class="p">:</span>
+                <span class="n">pointer</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="k">break</span>
+            <span class="n">pointer</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">strs</span><span class="p">[</span><span class="mi">0</span><span class="p">][:</span><span class="n">pointer</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div></div>
+
+<h3 id="tip-13">Tip</h3>
+<ul>
+  <li>注意边界情况，如空集、空字符串等，易出现访问错误</li>
+</ul>
+
+<h2 id="15-3sum">#15 3Sum</h2>
+
+<h3 id="列举元素重复次数">列举元素重复次数</h3>
+<p>分三种情况依次寻找可能的组合。1.三个元素均不重复，通过其大小关系限制重复组合。2.有两个元素重复，通过出现次数统计限制重复组合。3.三个元素均重复，仅有可能为3个0<br />
+时间$O(n^2)$<br />
+空间$O(n)$</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">collections</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">threeSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+        <span class="n">numDict</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">Counter</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+        <span class="n">numSort</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">numDict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">numSort</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">numSort</span><span class="p">)):</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">numSort</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="n">b</span> <span class="o">=</span> <span class="n">numSort</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                <span class="n">c</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">c</span> <span class="o">&lt;=</span> <span class="n">b</span><span class="p">:</span>
+                    <span class="k">break</span>
+                <span class="k">if</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">numDict</span><span class="p">:</span>
+                    <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">])</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">numDict</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">numDict</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span> <span class="ow">in</span> <span class="n">numDict</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">i</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">numDict</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">output</span>
+</code></pre></div></div>
+
+<h3 id="tip-14">Tip</h3>
+<ul>
+  <li>多维数组输出时注意其结构</li>
+</ul>
+
+<h2 id="16-3sum-closest">#16 3Sum Closest</h2>
+
+<h3 id="穷举">穷举</h3>
+<p>次序挑选可能的三个元素，计算其和与目标的距离，保存其中的最优值<br />
+时间$O(n^3)$<br />
+空间$O(1)$</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">threeSumClosest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="n">bestSol</span> <span class="o">=</span> <span class="mf">1e9</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">nums</span><span class="p">)):</span>
+                    <span class="n">sum3</span> <span class="o">=</span> <span class="n">nums</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">nums</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">sum3</span> <span class="o">-</span> <span class="n">target</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">abs</span><span class="p">(</span><span class="n">bestSol</span> <span class="o">-</span> <span class="n">target</span><span class="p">):</span>
+                        <span class="n">bestSol</span> <span class="o">=</span> <span class="n">sum3</span>
+        <span class="k">return</span> <span class="n">bestSol</span>
+</code></pre></div></div>
+<h3 id="排序后二分">排序后二分</h3>
+<p>将数据排序，随后挑选可能的前两个元素，二分查找最接近的值，需要限定位置关系来避免重复<br />
+时间$O(n^2\log n)$<br />
+空间$O(1)$</p>
+
+<h3 id="穷举预先剪枝">*穷举预先剪枝</h3>
+<p>将数据排序，确定第一个元素后，使用两指针来挑选元素。通过比较当前的和与目标值，确定左指针右移还是右指针左移。及时保存最优值<br />
+时间$O(n^2)$<br />
+空间$O(1)$</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="c1"># @return an integer
+</span>    <span class="k">def</span> <span class="nf">threeSumClosest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+        <span class="n">num</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">num</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">num</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">num</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">):</span>
+            <span class="n">j</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="k">while</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">:</span>
+                <span class="nb">sum</span> <span class="o">=</span> <span class="n">num</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">num</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">num</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+                <span class="k">if</span> <span class="nb">sum</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="nb">sum</span>
+                <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">sum</span> <span class="o">-</span> <span class="n">target</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">abs</span><span class="p">(</span><span class="n">result</span> <span class="o">-</span> <span class="n">target</span><span class="p">):</span>
+                    <span class="n">result</span> <span class="o">=</span> <span class="nb">sum</span>
+                <span class="k">if</span> <span class="nb">sum</span> <span class="o">&lt;</span> <span class="n">target</span><span class="p">:</span>
+                    <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">elif</span> <span class="nb">sum</span> <span class="o">&gt;</span> <span class="n">target</span><span class="p">:</span>
+                    <span class="n">k</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">result</span>
+</code></pre></div></div>
+
+<h3 id="tip-15">Tip</h3>
+<ul>
+  <li>穷举时考虑剪枝的可能性，提前降低复杂度</li>
+  <li>双指针逼近的这一系列策略需要内化</li>
+</ul>
+
+<h2 id="17-letter-combinations-of-a-phone-number">#17 Letter Combinations of a Phone Number</h2>
+
+<h3 id="逐位组合">逐位组合</h3>
+<p>存储每个数字可能代表的字符，随后依次扩充<br />
+时间$O(3^n)$<br />
+空间$O(3^n)$</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">letterCombinations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">digits</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="n">letterDict</span> <span class="o">=</span> <span class="p">{</span><span class="s">'2'</span><span class="p">:</span> <span class="p">[</span><span class="s">'a'</span><span class="p">,</span> <span class="s">'b'</span><span class="p">,</span> <span class="s">'c'</span><span class="p">],</span> <span class="s">'3'</span><span class="p">:</span> <span class="p">[</span><span class="s">'d'</span><span class="p">,</span> <span class="s">'e'</span><span class="p">,</span> <span class="s">'f'</span><span class="p">],</span> \
+                      <span class="s">'4'</span><span class="p">:</span> <span class="p">[</span><span class="s">'g'</span><span class="p">,</span> <span class="s">'h'</span><span class="p">,</span> <span class="s">'i'</span><span class="p">],</span> <span class="s">'5'</span><span class="p">:</span> <span class="p">[</span><span class="s">'j'</span><span class="p">,</span> <span class="s">'k'</span><span class="p">,</span> <span class="s">'l'</span><span class="p">],</span> \
+                      <span class="s">'6'</span><span class="p">:</span> <span class="p">[</span><span class="s">'m'</span><span class="p">,</span> <span class="s">'n'</span><span class="p">,</span> <span class="s">'o'</span><span class="p">],</span> <span class="s">'7'</span><span class="p">:</span> <span class="p">[</span><span class="s">'p'</span><span class="p">,</span> <span class="s">'q'</span><span class="p">,</span> <span class="s">'r'</span><span class="p">,</span> <span class="s">'s'</span><span class="p">],</span> \
+                      <span class="s">'8'</span><span class="p">:</span> <span class="p">[</span><span class="s">'t'</span><span class="p">,</span> <span class="s">'u'</span><span class="p">,</span> <span class="s">'v'</span><span class="p">],</span> <span class="s">'9'</span><span class="p">:</span> <span class="p">[</span><span class="s">'w'</span><span class="p">,</span> <span class="s">'x'</span><span class="p">,</span> <span class="s">'y'</span><span class="p">,</span> <span class="s">'z'</span><span class="p">]}</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">digits</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="p">[</span><span class="s">''</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">digits</span><span class="p">:</span>
+            <span class="n">temOutput</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">letterDict</span><span class="p">[</span><span class="n">num</span><span class="p">]:</span>
+                <span class="k">for</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">output</span><span class="p">:</span>
+                    <span class="n">temOutput</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">code</span><span class="o">+</span><span class="n">char</span><span class="p">)</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">temOutput</span><span class="p">[:]</span>
+        <span class="k">return</span> <span class="n">output</span>
+</code></pre></div></div>
+
+<h3 id="tip-16">Tip</h3>
+<ul>
+  <li>输入为空时，需要检验已有算法能否处理</li>
+  <li>换行符\的放置</li>
+</ul>
+
+<h2 id="18-4sum">#18 4Sum</h2>
+
+<h3 id="迭代求解">迭代求解</h3>
+<p>先对元素进行排序。核心是快速实现2-Sum，使用两端指针不断逼近，重复元素的限制条件是左侧指针需指向第一个、右侧指针需指向最后一个。3-Sum相当于选择一个元素后，在其右侧的元素寻找2-Sum，同样限制条件是需要指向重复元素的第一个。4-Sum类似，选择一个元素，在右侧寻找3-Sum，同样限制上条件。<br />
+时间$O(n^3)$<br />
+空间$O(n)$</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">fourSum</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nums</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">target</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]]:</span>
+        <span class="n">numSort</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">numSort</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[]</span>
+        <span class="n">p1</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">p2</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">p1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">numSort</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span><span class="p">:</span>
+            <span class="n">p3</span> <span class="o">=</span> <span class="n">p2</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="n">p4</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">numSort</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+            <span class="k">while</span> <span class="n">p3</span> <span class="o">&lt;</span> <span class="n">p4</span><span class="p">:</span>
+                <span class="n">sum4</span> <span class="o">=</span> <span class="n">numSort</span><span class="p">[</span><span class="n">p1</span><span class="p">]</span> <span class="o">+</span> <span class="n">numSort</span><span class="p">[</span><span class="n">p2</span><span class="p">]</span> <span class="o">+</span> <span class="n">numSort</span><span class="p">[</span><span class="n">p3</span><span class="p">]</span> <span class="o">+</span> <span class="n">numSort</span><span class="p">[</span><span class="n">p4</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">sum4</span> <span class="o">&gt;</span> <span class="n">target</span><span class="p">:</span>
+                    <span class="n">p4</span> <span class="o">-=</span> <span class="mi">1</span>
+                    <span class="k">while</span> <span class="n">p3</span> <span class="o">&lt;</span> <span class="n">p4</span> <span class="ow">and</span> <span class="n">numSort</span><span class="p">[</span><span class="n">p4</span><span class="p">]</span> <span class="o">==</span> <span class="n">numSort</span><span class="p">[</span><span class="n">p4</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>
+                        <span class="n">p4</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">sum4</span> <span class="o">&lt;</span> <span class="n">target</span><span class="p">:</span>
+                    <span class="n">p3</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">while</span> <span class="n">p3</span> <span class="o">&lt;</span> <span class="n">p4</span> <span class="ow">and</span> <span class="n">numSort</span><span class="p">[</span><span class="n">p3</span><span class="p">]</span> <span class="o">==</span> <span class="n">numSort</span><span class="p">[</span><span class="n">p3</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                        <span class="n">p3</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">sum4</span> <span class="o">==</span> <span class="n">target</span><span class="p">:</span>
+                    <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">numSort</span><span class="p">[</span><span class="n">p1</span><span class="p">],</span> <span class="n">numSort</span><span class="p">[</span><span class="n">p2</span><span class="p">],</span> \
+                                   <span class="n">numSort</span><span class="p">[</span><span class="n">p3</span><span class="p">],</span> <span class="n">numSort</span><span class="p">[</span><span class="n">p4</span><span class="p">]])</span>
+                    <span class="n">p3</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="k">while</span> <span class="n">p3</span> <span class="o">&lt;</span> <span class="n">p4</span> <span class="ow">and</span> <span class="n">numSort</span><span class="p">[</span><span class="n">p3</span><span class="p">]</span> <span class="o">==</span> <span class="n">numSort</span><span class="p">[</span><span class="n">p3</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+                        <span class="n">p3</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="n">p4</span> <span class="o">-=</span> <span class="mi">1</span>
+                    <span class="k">while</span> <span class="n">p3</span> <span class="o">&lt;</span> <span class="n">p4</span> <span class="ow">and</span> <span class="n">numSort</span><span class="p">[</span><span class="n">p4</span><span class="p">]</span> <span class="o">==</span> <span class="n">numSort</span><span class="p">[</span><span class="n">p4</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>
+                        <span class="n">p4</span> <span class="o">-=</span> <span class="mi">1</span>
+            <span class="n">p2</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">while</span> <span class="n">p2</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">numSort</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">numSort</span><span class="p">[</span><span class="n">p2</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">numSort</span><span class="p">[</span><span class="n">p2</span><span class="p">]:</span>
+                <span class="n">p2</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">p2</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">numSort</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">p1</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">while</span> <span class="n">p1</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">numSort</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">numSort</span><span class="p">[</span><span class="n">p1</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">numSort</span><span class="p">[</span><span class="n">p1</span><span class="p">]:</span>
+                    <span class="n">p1</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">p2</span> <span class="o">=</span> <span class="n">p1</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">output</span>
+</code></pre></div></div>
+
+<h3 id="tip-17">Tip</h3>
+<ul>
+  <li>从递归角度考虑问题，在指针变化时可自行模拟推导确定细节条件</li>
+</ul>
+
+<h2 id="19-remove-nth-node-from-end-of-list">#19 Remove Nth Node From End of List</h2>
+
+<h3 id="双指针访问">双指针访问</h3>
+<p>先访问n个节点，随后新添一个指针，与原指针以相同步调访问下去。当原指针访问到末尾时，新指针所指示位置后一节点应被删去。<br />
+时间$O(n)$<br />
+空间$O(1)$</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+</span>
+<span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">removeNthFromEnd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">head</span><span class="p">:</span> <span class="n">ListNode</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ListNode</span><span class="p">:</span>
+        <span class="n">lead</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">lead</span> <span class="o">=</span> <span class="n">lead</span><span class="o">.</span><span class="nb">next</span>
+            <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">choose</span> <span class="o">=</span> <span class="n">head</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">lead</span><span class="p">:</span>
+            <span class="n">head</span> <span class="o">=</span> <span class="n">head</span><span class="o">.</span><span class="nb">next</span>
+            <span class="k">return</span> <span class="n">head</span>
+        <span class="k">while</span> <span class="n">lead</span><span class="o">.</span><span class="nb">next</span><span class="p">:</span>
+            <span class="n">lead</span> <span class="o">=</span> <span class="n">lead</span><span class="o">.</span><span class="nb">next</span>
+            <span class="n">choose</span> <span class="o">=</span> <span class="n">choose</span><span class="o">.</span><span class="nb">next</span>
+        <span class="n">choose</span><span class="o">.</span><span class="nb">next</span> <span class="o">=</span> <span class="n">choose</span><span class="o">.</span><span class="nb">next</span><span class="o">.</span><span class="nb">next</span>
+        <span class="k">return</span> <span class="n">head</span>
+</code></pre></div></div>
+
+<h3 id="tip-18">Tip</h3>
+<ul>
+  <li>注意边界条件，删除头元素需特殊处理</li>
+  <li>函数传入的元素是一个类，迭代访问下一个元素不会更改原本的值</li>
+</ul>
+
+<h2 id="20-valid-parentheses">#20 Valid Parentheses</h2>
+
+<h3 id="栈结构">栈结构</h3>
+<p>字符若为左侧括号，入栈；否则，从栈弹出一字符，比较是否合法。<br />
+时间$O(n)$<br />
+空间$O(n)$</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Solution</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">isValid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="n">stack</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="nb">set</span><span class="p">([</span><span class="s">'('</span><span class="p">,</span> <span class="s">'{'</span><span class="p">,</span> <span class="s">'['</span><span class="p">])</span>
+        <span class="n">right</span> <span class="o">=</span> <span class="p">{</span><span class="s">')'</span><span class="p">:</span> <span class="s">'('</span><span class="p">,</span> <span class="s">'}'</span><span class="p">:</span> <span class="s">'{'</span><span class="p">,</span> <span class="s">']'</span><span class="p">:</span> <span class="s">'['</span><span class="p">}</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)):</span>
+            <span class="n">char</span> <span class="o">=</span> <span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">left</span><span class="p">:</span>
+                <span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="bp">False</span>
+                <span class="n">charPop</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">right</span><span class="p">[</span><span class="n">char</span><span class="p">]</span> <span class="o">!=</span> <span class="n">charPop</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="bp">False</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">stack</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">True</span>
+        <span class="k">return</span> <span class="bp">False</span>
+</code></pre></div></div>
+
+<h3 id="tip-19">Tip</h3>
+<ul>
+  <li>栈可以用内置的List实现，队列用collections.deque</li>
+</ul>
+
   </div><!-- /.entry-content -->
 </article><!-- /.hentry -->
 
