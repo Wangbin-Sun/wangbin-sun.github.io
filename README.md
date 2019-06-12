@@ -1,1 +1,1 @@
-It is a personal blog, adapted from **HPSTR Jekyll Theme**(https://mmistakes.github.io/hpstr-jekyll-theme/)
+This blog is adapted from **Hydejack Theme**(https://hydejack.com/).
