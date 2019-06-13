@@ -3,7 +3,6 @@ layout: post
 title: "Skill Stack for Algorithm Engineer"
 description: >
     算法工程师的技术栈总结
-excerpt_separator: <!--more-->
 image: /assets/img/blog/algo.png
 ---
 本文将从Data Management, Coding, Algorithm, Special, Tool及Project来梳理算法工程师的技术栈
@@ -13,7 +12,6 @@ image: /assets/img/blog/algo.png
 
 # Data Management
 该分类涵盖数据的获取、存储、计算、展示，包括单机规模的数据管理与分布式系统的数据管理。
-<!--more-->
 ## SQL
 
 ## Crawler

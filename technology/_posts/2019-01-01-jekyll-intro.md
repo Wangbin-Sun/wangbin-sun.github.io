@@ -3,14 +3,12 @@ layout: post
 title: "Jekyll Introduction"
 description: >
     Jekyll是该博客使用的前端框架，本文将对其初步介绍
-excerpt_separator: <!--more-->
 image: /assets/img/blog/jekyll.png
 ---
 之前在Github上搜索创建网站的教程，发现Jekyll是推荐的框架，于是简单研究了一下。
 
 # 背景
 [Jekyll](https://jekyllrb.com/)是Github Pages默认支持的一种前端框架。官网介绍其特点包括：**简单**，不需要数据库后端、评论功能、调节功能、系统更新等繁琐操作，只需要输入文本内容即可；**静态**，支持Markdown、Liquid、HTML&CSS，静态站点部署所见即所得；**博客友好**，永久链接、分类、页面、博文、自定义布局等是框架的核心关注点。
- <!--more-->
 # 安装
 直接使用gem安装bundler和jekyll
 ```

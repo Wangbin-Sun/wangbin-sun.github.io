@@ -3,7 +3,6 @@ layout: post
 title: Statistical Natural Language Process (Notes)
 description: >
   宗成庆《统计自然语言处理》笔记
-excerpt_separator: <!--more-->
 image: /assets/img/blog/statistical_natural_language_process.jpg
 ---
 该书可作为自然语言处理的查阅资料，内容翔实。
@@ -18,7 +17,6 @@ image: /assets/img/blog/statistical_natural_language_process.jpg
 
 ## 第2章 预备知识
 * 全概率公式 $$P(A) = \sum_i P(A \vert B_i)P(B_i)$$
-<!--more-->
 * 通常假设一个句子出现独立于它之前的语句，句子概率分布近似符合二项式分布
 * [熵]定义$$H(X) = -\sum_{x\in R}p(x)\log_2p(x)$$
   * 熵最大时，随机变量最不确定

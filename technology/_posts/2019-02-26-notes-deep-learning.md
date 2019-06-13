@@ -3,7 +3,6 @@ layout: post
 title: "Deep Learning (Notes)"
 description: >
     Ian Goodfellow, Yoshua Bengio和Aaron Courville所著《Deep Learning》笔记
-excerpt_separator: <!--more-->
 image: /assets/img/blog/deep_learning.jpg
 ---
 适合系统性了解深度学习这一领域与一些较为前沿的研究方向
@@ -13,7 +12,6 @@ image: /assets/img/blog/deep_learning.jpg
 - [Crucial components in Machine Learning] the representation of the data they are given, or called "Feature"
     - [Representation Learning]  Use machine learning to discover not only the mapping from representation to output but also the representation itself.
 - [Historical Wave] cybernetics -> connectionism + neural networks -> deep learning
-<!--more-->
 
 # Chap. 4 Numerical Computation
 - [Poor condition] For $$A\in R^{n\times n}$$, its condition number is $$max_{i,j}(\vert \frac{ \lambda _i}{\lambda _j} \vert)$$.When this number is large, matrix inversion is particularly sensitive to error in the input.
