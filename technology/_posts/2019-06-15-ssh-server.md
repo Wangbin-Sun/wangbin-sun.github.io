@@ -77,4 +77,82 @@ set smtp-auth=login
 
 保存后，`sudo service cron restart`重新启动服务来开始监控，MAC下不需要重新启动这一操作。
 
-到这里，通过tmate, crontab和mail来搭建穿通NAT的SSH服务器就基本完成了。后续可以考虑其安全层面上的一些拓展。
+## 国内服务器
+国外服务器`tmate.io`非常不稳定，考虑迁移到国内的服务器来来做转发工作，这里使用阿里云的ECS服务。
+
+启动Ubuntu后，首先安装相关的依赖包，再之前进行更新操作
+```
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install git-core build-essential pkg-config libtool libevent-dev libncurses-dev zlib1g-dev automake libssh-dev cmake ruby
+```
+随后git下载所需的源码。
+```
+git clone https://github.com/tmate-io/tmate-slave.git && cd tmate-slave
+```
+为了生成rsa及ecdsa公钥。这里需要提前将`./create_key.sh`修改，将原本生成的`ed25519`改成`ecdsa`，具体的，将该文件最后行改为
+```
+gen_key rsa && gen_key ecdsa || exit 1
+```
+随后，可以生成公钥
+```
+./create_keys.sh 
+./autogen.sh && ./configure && make
+sudo ./tmate-slave
+```
+对于生成的公钥，需要记录其md5值
+```
+ssh-keygen -E md5 -lf keys/ssh_host_rsa_key.pub
+ssh-keygen -E md5 -lf keys/ssh_host_ecdsa_key.pub
+```
+完成安装后，开启服务器，监控9999端口
+```
+sudo ./tmate-slave -k /root/tmate-slave/keys -p 9999 -h [替换为公网IP地址] -v
+```
+需要登陆阿里云的安全组规则，将9999端口新增入方向的允许策略
+
+在客户端，即需要共享终端的上，需要修改tmate的配置
+```
+vim ~/.tmate.conf
+```
+新建文件，随后添加
+```
+set -g tmate-server-host "[替换为公网IP地址]"
+set -g tmate-server-port 9999
+set -g tmate-server-rsa-fingerprint   "[aa:bb:cc替换为rsa的md5值]"
+set -g tmate-server-ecdsa-fingerprint "[aa:bb:cc替换为ecdsa的md5值]"
+set -g tmate-identity ""
+```
+设置完成后，可以通过`tmate`进行调试
+
+### 服务器安装过程错误
+* msgpack
+`configure: error: "msgpack >= 1.2.0 not found"`
+需要手动编译安装静态包
+```
+git clone https://github.com/msgpack/msgpack-c.git 
+cd msgpack-c
+cmake .
+make
+make install
+```
+* libssh
+`configure: error: "libssh >= 0.7.0 not found"`
+需要手动编译安装静态包
+```
+git clone https://git.libssh.org/projects/libssh.git libssh
+cd libssh
+mkdir build
+cmake ..
+make
+make install
+```
+* libssh.so.4
+`./tmate-slave: /usr/lib/x86_64-linux-gnu/libssh.so.4: no version information available (required by ./tmate-slave)`
+需要将已安装的其他版本libssh卸载
+```
+dpkg -l|grep libssh
+ apt-get remove libssh-4
+```
+
+到这里，通过tmate, crontab和mail来搭建穿通NAT的稳定的SSH服务器就基本完成了。

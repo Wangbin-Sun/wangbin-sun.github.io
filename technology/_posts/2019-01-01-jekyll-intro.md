@@ -42,7 +42,7 @@ bundle install
 ```
 得到成功的消息后，在本地运行服务器
 ```
-bundle exec jekyll serve
+bundle exec jekyll server
 ```
 访问[http://localhost:4000](http://localhost:4000)可看到示例效果。
 
